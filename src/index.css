@@ -1,2 +1,11 @@
 @import "tailwindcss";
+@tailwind utilities;
 
+@layer utilities {
+    .text-primary {
+        color: #09511C;
+    }
+    .text-secondary {
+        color: #757575;
+    }
+}
