@@ -5,6 +5,7 @@ import Users from "./pages/Users"
 import AtlasAct from "./pages/AtlasAct"
 import DashboardAct from "./pages/DashboardAct"
 import Survey from "./pages/Survey"
+import { Download } from "lucide-react"
 function App() {
     return (
         <Router>
@@ -16,6 +17,7 @@ function App() {
                         <Route path="/users" element={<Users />} />
                         <Route path="/atlas-activity" element={<AtlasAct />} />
                         <Route path="/dashboard-activity" element={<DashboardAct />} />
+                        <Route path="/download" element={<Download />} />
                         <Route path="/survey" element={<Survey />} />
                     </Routes>
                 </main>
