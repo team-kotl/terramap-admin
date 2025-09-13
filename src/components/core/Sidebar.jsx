@@ -15,7 +15,7 @@ const Sidebar = () => {
                         className={({ isActive }) =>
                             `flex items-center gap-5 hover:text-primary ${
                                 isActive ? "text-primary font-bold" : ""}`}>
-                        <LayoutDashboard size={20} /> Overview
+                        <LayoutDashboard size={20} /> Dashboard
                     </NavLink>
                 </li>
                 <li>

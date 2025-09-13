@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Sidebar from "./components/core/Sidebar"
-import Overview from "./pages/Overview"
+import Overview from "./pages/Dashboard"
 import Users from "./pages/Users"
 import AtlasAct from "./pages/AtlasAct"
 import DashboardAct from "./pages/DashboardAct"
