@@ -114,7 +114,6 @@ const AtlasActivity = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      {/* Search Bar */}
       <div className="flex justify-between items-center bg-white shadow p-2 rounded mb-6">
         <div className="relative flex-1 mr-10">
           <Search className="absolute left-2 top-2 h-5 w-5 text-gray-500" />
@@ -127,11 +126,8 @@ const AtlasActivity = () => {
         <div className="w-px h-6 bg-gray-400 mr-6"></div>
         <span className="text-gray-600 font-medium mr-5">superadmin</span>
       </div>
-
-      {/* Atlas Activity Title */}
       <h1 className="text-3xl font-bold text-green-800 mb-6">Atlas Activity</h1>
 
-      {/* Table */}
       <div className="bg-white shadow rounded overflow-x-auto">
         <table className="table-auto w-full border-collapse">
           <thead>
