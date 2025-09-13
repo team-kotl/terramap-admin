@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { LayoutDashboard, Users, Map, BarChart3, SquarePen } from "lucide-react"
+import { LayoutDashboard, Users, Map, BarChart3, SquarePen, DownloadCloud } from "lucide-react"
 
 const Sidebar = () => {
     return (
@@ -40,6 +40,14 @@ const Sidebar = () => {
                             `flex items-center gap-5 hover:text-primary ${
                                 isActive ? "text-primary font-bold" : ""}`}>
                         <BarChart3 size={20} /> Dashboard Activity
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/download" 
+                        className={({ isActive }) =>
+                            `flex items-center gap-5 hover:text-primary ${
+                                isActive ? "text-primary font-bold" : ""}`}>
+                        <DownloadCloud size={20} /> Download
                     </NavLink>
                 </li>
                 <li>
