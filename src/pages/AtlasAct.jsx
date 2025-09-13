@@ -113,7 +113,7 @@ const AtlasActivity = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <div className="flex justify-between items-center bg-white shadow p-2 rounded mb-6">
         <div className="relative flex-1 mr-10">
           <Search className="absolute left-2 top-2 h-5 w-5 text-gray-500" />
