@@ -5,11 +5,13 @@ import Users from "./pages/Users"
 import AtlasAct from "./pages/AtlasAct"
 import DashboardAct from "./pages/DashboardAct"
 import Survey from "./pages/Survey"
-import Download  from "./pages/Download"
+import Download from "./pages/Download"
+import Login from "./pages/Login"
+
 function App() {
     return (
         <Router>
-            <div className="flex h-screen">
+            <div className="flex min-h-screen">
                 <Sidebar />
                 <main className="flex-1 p-6 bg-gray-100 overflow-y-hidden">
                     <Routes>
@@ -19,7 +21,7 @@ function App() {
                         <Route path="/dashboard-activity" element={<DashboardAct />} />
                         <Route path="/download" element={<Download />} />
                         <Route path="/survey" element={<Survey />} />
-                    </Routes>
+                    </Routes>   
                 </main>
             </div>
         </Router>
