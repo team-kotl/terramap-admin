@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 
 const AtlasActivity = () => {
-  const logs = [
+const logs = [
     {
       id: "AT001",
       ipv4: "10.25.89.123",

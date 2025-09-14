@@ -5,7 +5,7 @@ import Users from "./pages/Users"
 import AtlasAct from "./pages/AtlasAct"
 import DashboardAct from "./pages/DashboardAct"
 import Survey from "./pages/Survey"
-import { Download } from "lucide-react"
+import Download  from "./pages/Download"
 function App() {
     return (
         <Router>
