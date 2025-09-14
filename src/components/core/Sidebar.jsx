@@ -5,7 +5,7 @@ import { LayoutDashboard, Users, Map, BarChart3, SquarePen, DownloadCloud, User,
 const Sidebar = () => {
     const [darkMode, setDarkMode] = useState(false);
     return (
-        <aside className="w-80 h-screen bg-gray-200 text-secondary p-4 shadow-lg shadow-gray-700/100 flex flex-col justify-between">
+        <aside className="w-80 h-screen bg-gray-200 text-secondary p-4 flex flex-col justify-between">
             
             {/* Top Section */}
             <div>
