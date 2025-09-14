@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Survey = () => {
     const [selectedClient, setSelectedClient] = useState(null);
-    const [activeTab, setActiveTab] = useState("profile");
+    const [activeTab, setActiveTab] = useState("satisfaction");
     const tabs = ["satisfaction", "comments"];
     const surveyResponses = [
         {
@@ -96,13 +96,13 @@ if (selectedClient) {
                 Back to Survey Response List
                 </button>
 
-                <div className="bg-white rounded-lg shadow-lg p-8 max-h-[80vh] overflow-y-auto">
-                <div className="border-b pb-4 mb-6">
-                    <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <User className="w-7 h-7 text-gray-600" />
-                    {selectedClient.name}
-                    </h2>
-                </div>
+                <div className="bg-white rounded-lg shadow-lg p-8 max-h-[90vh] overflow-y-auto">
+                    <div className="border-b pb-4 mb-6">
+                        <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                        <User className="w-7 h-7 text-gray-600" />
+                        {selectedClient.name}
+                        </h2>
+                    </div>
 
                 <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 mb-5">
                     {tabs.map((tab) => (
