@@ -2,293 +2,186 @@ import { Search, CirclePlus, Pencil, Trash, CircleX } from "lucide-react";
 import { useState } from "react";
 
 const Users = () => {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const users = [
-    {
-      staffId: "ST001",
-      username: "janedoe",
-      role: "Admin",
-      remarks: "Benguet",
-    },
-    {
-      staffId: "ST002",
-      username: "justincabuena",
-      role: "Staff",
-      remarks: "Benguet",
-    },
-    {
-      staffId: "ST003",
-      username: "andrewigs",
-      role: "Staff",
-      remarks: "Ifugao",
-    },
-    {
-      staffId: "ST004",
-      username: "bryce",
-      role: "Manager",
-      remarks: "Kalinga",
-    },
-    {
-      staffId: "ST005",
-      username: "stephdrew",
-      role: "Staff",
-      remarks: "Mt. Province",
-    },
-    { staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
-    {
-      staffId: "ST007",
-      username: "petergrf",
-      role: "Admin",
-      remarks: "Kalinga",
-    },
-    { staffId: "ST008", 
-      username: "mgnfox", 
-      role: "Staff", 
-      remarks: "Apayao" 
-    },
-    { staffId: "ST009", 
-      username: "lee", 
-      role: "Staff", 
-      remarks: "Ifugao" 
-    },
-  ];
+    const users = [
+        { staffId: "ST001", username: "janedoe", role: "Admin", remarks: "Benguet" },
+        { staffId: "ST002", username: "justincabuena", role: "Staff", remarks: "Benguet" },
+        { staffId: "ST003", username: "andrewigs", role: "Staff", remarks: "Ifugao" },
+        { staffId: "ST004", username: "bryce", role: "Manager", remarks: "Kalinga" },
+        { staffId: "ST005", username: "stephdrew", role: "Staff", remarks: "Mt. Province" },
+        { staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
+        { staffId: "ST007", username: "petergrf", role: "Admin", remarks: "Kalinga" },
+        { staffId: "ST008", username: "mgnfox", role: "Staff", remarks: "Apayao" },
+        { staffId: "ST009", username: "lee", role: "Staff", remarks: "Ifugao" },
+    ];
 
-  return (
-    <div className="relative p-6 bg-gray-100">
-      <div className="flex justify-between items-center bg-white shadow p-2 rounded mb-6">
-        <div className="relative flex-1 mr-10">
-          <Search className="absolute left-2 top-2 h-5 w-5 text-gray-500" />
-          <input
-            type="text"
-            placeholder="Search Users"
-            className="pl-10 pr-3 py-2 rounded-md text-sm w-full focus:outline-none focus:ring-0"
-          />
+return (
+    <div className="relative p-4 md:p-5 bg-gray-100">
+      {/* Top bar: search + profile */}
+        <div className="flex flex-row md:justify-between md:items-center bg-white shadow p-2 rounded mb-6 gap-3 mt-5">
+            <div className="relative flex-1">
+            <Search className="absolute left-2 top-2 h-5 w-5 text-gray-500" />
+            <input
+                type="text"
+                placeholder="Search Users"
+                className="pl-10 pr-3 py-2 rounded-md text-sm w-full focus:outline-none focus:ring-0"
+            />
+            </div>
+
+            <div className="hidden md:block w-px h-6 bg-gray-400 mx-3"></div>
+
+            <span className="hidden md:block text-gray-600 font-medium text-sm md:text-base ">
+            superadmin
+            </span>
         </div>
 
-        <div className="w-px h-6 bg-gray-400 mr-6"></div>
-        <span className="text-gray-600 font-medium mr-5">superadmin</span>
-      </div>
+        {/* Header + Add button */}
+        <div className="flex flex-wrap justify-between items-center mb-6 gap-3">
+            <h1 className="text-2xl md:text-3xl font-bold text-green-800">Users</h1>
+            <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 md:px-4 md:py-2 rounded-md"
+            >
+            <CirclePlus className="h-5 w-5" />
+            Add User
+            </button>
+        </div>
 
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-green-800">Users</h1>
-        <button
-          onClick={() => {
-            setIsAddModalOpen(true);
-          }}
-          className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md"
-        >
-          <CirclePlus className="h-5 w-5" />
-          Add User
-        </button>
-      </div>
-
-      <div className="bg-white shadow rounded overflow-x-auto">
-        <table className="table-auto w-full border-collapse">
-          <thead>
-            <tr className="bg-green-800 text-white text-left">
-              <th className="pl-12 py-3 text-left w-1/6">Staff ID</th>
-              <th className="px-4 py-3 w-1/6">Username</th>
-              <th className="px-2 py-3 w-1/6">Role</th>
-              <th className="px-4 py-3 w-1/6">Remarks</th>
-              <th className="px-6 py-3 w-1/9">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr
-                key={user.staffId}
-                className="border-b border-gray-200 hover:bg-gray-50"
-              >
-                <td className="pl-12 py-3">{user.staffId}</td>
-                <td className="px-4 py-3">{user.username}</td>
-                <td className="px-2 py-3">{user.role}</td>
-                <td className="px-4 py-3">{user.remarks}</td>
-                <td className="px-4 py-3">
-                  <button
-                    onClick={() => {
-                      setIsEditModalOpen(true);
-                    }}
-                    className="text-gray-500 hover:text-blue-500"
-                  >
-                    <Pencil className="h-5 w-5" />
-                  </button>
-                  <button className="text-red-400 hover:text-red-500 ml-3">
-                    <Trash className="h-5 w-5" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {isAddModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-out">
-            <div className="bg-green-800 rounded-t-xl px-6 py-4">
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold text-white">Add New User</h2>
-                <button
-                  onClick={() => setIsAddModalOpen(false)}
-                  className="text-green-100 hover:text-white hover:bg-green-700 rounded-full p-1 transition-colors duration-200"
+        {/* Table */}
+        <div className="bg-white shadow rounded overflow-x-auto">
+            <table className="table-auto w-full border-collapse min-w-[600px]">
+            <thead>
+                <tr className="bg-green-800 text-white text-left text-sm md:text-base">
+                <th className="pl-4 md:pl-12 py-2 md:py-3">Staff ID</th>
+                <th className="px-2 md:px-4 py-2 md:py-3">Username</th>
+                <th className="px-2 py-2 md:py-3">Role</th>
+                <th className="px-2 md:px-4 py-2 md:py-3">Remarks</th>
+                <th className="px-2 md:px-6 py-2 md:py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {users.map((user) => (
+                <tr
+                    key={user.staffId}
+                    className="border-b border-gray-200 hover:bg-gray-50 text-sm md:text-base"
                 >
-                  <CircleX className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-
-            <div className="px-6 py-6">
-              <form className="space-y-5">
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Enter username"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-400"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Role
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Enter role"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Remarks
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Enter remarks"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="Enter password"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="pt-4 flex space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsAddModalOpen(false)}
-                    className="flex-1 px-6 py-3 bg-gray-200 text-black rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 px-6 py-3 bg-green-700 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                  >
-                    Update User
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+                    <td className="pl-4 md:pl-12 py-2 md:py-3">{user.staffId}</td>
+                    <td className="px-2 md:px-4 py-2 md:py-3">{user.username}</td>
+                    <td className="px-2 py-2 md:py-3">{user.role}</td>
+                    <td className="px-2 md:px-4 py-2 md:py-3">{user.remarks}</td>
+                    <td className="px-2 md:px-4 py-2 md:py-3 flex gap-2">
+                    <button
+                        onClick={() => setIsEditModalOpen(true)}
+                        className="text-gray-500 hover:text-blue-500"
+                    >
+                        <Pencil className="h-4 w-4 md:h-5 md:w-5" />
+                    </button>
+                    <button className="text-red-400 hover:text-red-500">
+                        <Trash className="h-4 w-4 md:h-5 md:w-5" />
+                    </button>
+                    </td>
+                </tr>
+                ))}
+            </tbody>
+            </table>
         </div>
-      )}
 
-      {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-out">
-            <div className="bg-green-800 rounded-t-xl px-6 py-4">
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold text-white">Edit User</h2>
+        {/* ADD USER MODAL */}
+        {isAddModalOpen && (
+            <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl shadow-lg w-11/12 md:w-1/2 max-w-lg p-6 relative">
+                {/* Close button */}
                 <button
-                  onClick={() => setIsEditModalOpen(false)}
-                  className="text-green-100 hover:text-white hover:bg-green-700 rounded-full p-1 transition-colors duration-200"
+                onClick={() => setIsAddModalOpen(false)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
                 >
-                  <CircleX className="h-6 w-6" />
+                <CircleX className="h-6 w-6" />
                 </button>
-              </div>
-            </div>
 
-            <div className="px-6 py-6">
-              <form className="space-y-5">
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Username
-                  </label>
-                  <input
+                <h2 className="text-xl font-bold text-green-800 mb-4">Add User</h2>
+
+                <form className="space-y-4">
+                <input
                     type="text"
-                    placeholder="Enter username"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Role
-                  </label>
-                  <input
+                    placeholder="Staff ID"
+                    className="w-full border rounded-md p-2"
+                />
+                <input
                     type="text"
-                    placeholder="Enter role"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    Remarks
-                  </label>
-                  <input
+                    placeholder="Username"
+                    className="w-full border rounded-md p-2"
+                />
+                <select className="w-full border rounded-md p-2">
+                    <option>Admin</option>
+                    <option>Manager</option>
+                    <option>Staff</option>
+                </select>
+                <input
                     type="text"
-                    placeholder="Enter remarks"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
+                    placeholder="Remarks"
+                    className="w-full border rounded-md p-2"
+                />
 
-                <div className="space-y-1">
-                  <label className="block text-sm font-semibold text-gray-700">
-                    New Password
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="Enter new password (optional)"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
-                  />
-                </div>
-
-                <div className="pt-4 flex space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsEditModalOpen(false)}
-                    className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
+                <button
                     type="submit"
-                    className="flex-1 px-6 py-3 bg-green-700 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                  >
-                    Update User
-                  </button>
-                </div>
-              </form>
+                    className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full"
+                >
+                    Save
+                </button>
+                </form>
             </div>
-          </div>
+            </div>
+        )}
+
+        {/* EDIT USER MODAL */}
+        {isEditModalOpen && (
+            <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl shadow-lg w-11/12 md:w-1/2 max-w-lg p-6 relative">
+                <button
+                onClick={() => setIsEditModalOpen(false)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+                >
+                <CircleX className="h-6 w-6" />
+                </button>
+
+                <h2 className="text-xl font-bold text-green-800 mb-4">Edit User</h2>
+
+                <form className="space-y-4">
+                <input
+                    type="text"
+                    placeholder="Staff ID"
+                    className="w-full border rounded-md p-2"
+                />
+                <input
+                    type="text"
+                    placeholder="Username"
+                    className="w-full border rounded-md p-2"
+                />
+                <select className="w-full border rounded-md p-2">
+                    <option>Admin</option>
+                    <option>Manager</option>
+                    <option>Staff</option>
+                </select>
+                <input
+                    type="text"
+                    placeholder="Remarks"
+                    className="w-full border rounded-md p-2"
+                />
+
+                <button
+                    type="submit"
+                    className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full"
+                >
+                    Update
+                </button>
+                </form>
+            </div>
+            </div>
+        )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default Users;
