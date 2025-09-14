@@ -277,7 +277,7 @@ const Users = () => {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                    className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                   >
                     Update User
                   </button>

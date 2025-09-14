@@ -1,6 +1,9 @@
-import { ChevronLeft, User, Calendar, FileText, Users } from 'lucide-react';
+import { FileText, ChevronLeft, User } from "lucide-react";
+import { useState } from "react";
 
 const Survey = () => {
+  const [selectedClient, setSelectedClient] = useState(null);
+
   const surveyResponses = [
     {
       id: 1,
@@ -36,6 +39,39 @@ const Survey = () => {
       sex: "Female",
     },
   ];
+
+  const RowClick = (client) => {
+    setSelectedClient(client);
+  };
+
+  const BackToList = () => {
+    setSelectedClient(null);
+  };
+
+  if (selectedClient) {
+    return (
+      <div className="min-h-screen p-6">
+        <div className="max-w-4xl mx-auto">
+          <button
+            onClick={BackToList}
+            className="flex items-center gap-2 mb-6 text-blue-600 hover:text-blue-800 transition-colors"
+          >
+            <ChevronLeft className="w-8 h-8" />
+            Back to Survey Response List
+          </button>
+
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="border-b pb-4 mb-6">
+              <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                <User className="w-7 h-7 text-blue-600" />
+                {selectedClient.name}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 bg-gray-100">
@@ -90,6 +126,7 @@ const Survey = () => {
               {surveyResponses.map((client) => (
                 <tr
                   key={client.id}
+                  onClick={() => RowClick(client)}
                   className="border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors duration-200"
                 >
                   <td className="p-4 text-gray-600">{client.name}</td>
