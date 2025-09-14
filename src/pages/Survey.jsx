@@ -1,5 +1,4 @@
 import { FileText, ChevronLeft, User, Star } from "lucide-react";
-import { comment } from "postcss";
 import { useState } from "react";
 
 const Survey = () => {
@@ -17,6 +16,12 @@ const Survey = () => {
         dateReleased: "2024-03-20",
         age: 32,
         sex: "Female",
+        q1rating: 2,
+        q2rating: 4,
+        q3rating: 1,
+        q4rating: 3,
+        q5rating: 3,
+        q6rating: 5,
         comments: "The service was excellent and the staff were very helpful."
         },
         {
@@ -29,6 +34,12 @@ const Survey = () => {
         dateReleased: "2024-03-19",
         age: 45,
         sex: "Male",
+        q1rating: 1,
+        q2rating: 3,
+        q3rating: 5,
+        q4rating: 4,
+        q5rating: 3,
+        q6rating: 2,
         comments: "I had to wait longer than expected, but overall it was a good experience."
         },
         {
@@ -41,6 +52,12 @@ const Survey = () => {
         dateReleased: "2024-03-18",
         age: 28,
         sex: "Female",
+        q1rating: 3,
+        q2rating: 5,
+        q3rating: 3,
+        q4rating: 2,
+        q5rating: 1,
+        q6rating: 4,
         comments: "The process was smooth and the staff were courteous."
         },
     ];
@@ -51,6 +68,21 @@ const Survey = () => {
 
     const BackToList = () => {
         setSelectedClient(null);
+    };
+
+    const renderStars = (rating) => {
+        return (
+        <div className="flex items-center gap-1 justify-center">
+            {Array.from({ length: 5 }, (_, i) => (
+            <Star
+                key={i}
+                className={`w-5 h-5 ${
+                i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
+                }`}
+            />
+            ))}
+        </div>
+        );
     };
 
 if (selectedClient) {
@@ -101,13 +133,7 @@ if (selectedClient) {
                                 sa opisina o sa website nito.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q1rating)}
                         <div className="flex flex-col">
                             <h1 className="font-bold underline">Cost</h1>
                             <h2 className="font-bold">
@@ -117,13 +143,7 @@ if (selectedClient) {
                                 (Nagbayad ako ng makatwirang halaga para sa aking transakyon.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q2rating)}
                         <div className="flex flex-col">
                             <h1 className="font-bold underline">Integrity</h1>
                             <h2 className="font-bold">
@@ -135,13 +155,7 @@ if (selectedClient) {
                                 “walang palakasan”, sa aking transakyon.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q3rating)}
                         <div className="flex flex-col">
                             <h1 className="font-bold underline">Assurance</h1>
                             <h2 className="font-bold">
@@ -154,13 +168,7 @@ if (selectedClient) {
                                 na sila ay handang tumulong sa akin.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q4rating)}
                         <div className="flex flex-col">
                             <h1 className="font-bold underline">Outcome</h1>
                             <h2 className="font-bold">
@@ -174,13 +182,7 @@ if (selectedClient) {
                                 na ipaliwanag sa akin.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q5rating)}
                         <div className="flex flex-col">
                             <h2 className="font-bold">
                                 I am satisfied with the service that I availed.
@@ -190,21 +192,15 @@ if (selectedClient) {
                                 sa napuntahan na tanggapan.)
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <Star className="w-5 h-5 text-gray-300" />
-                        </div>
+                        {renderStars(selectedClient.q6rating)}
                     </div>
                 )}
 
                 {activeTab === "comments" && (
                     <div className="mt-6">
-                    <p className="text-gray-700">
-                        {selectedClient.comments || "No comments provided."}
-                    </p>
+                        <p className="text-gray-700">
+                            {selectedClient.comments || "No comments provided."}
+                        </p>
                     </div>
                 )}
                 </div>
@@ -212,7 +208,6 @@ if (selectedClient) {
         </div>
     );
 }
-
     return (
     <div className="p-6 bg-gray-100">
         <h1 className="text-3xl font-bold text-green-800 mb-2">
