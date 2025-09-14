@@ -1,9 +1,11 @@
-import { FileText, ChevronLeft, User } from "lucide-react";
+import { FileText, ChevronLeft, User, Star } from "lucide-react";
+import { comment } from "postcss";
 import { useState } from "react";
 
 const Survey = () => {
     const [selectedClient, setSelectedClient] = useState(null);
-
+    const [activeTab, setActiveTab] = useState("profile");
+    const tabs = ["satisfaction", "comments"];
     const surveyResponses = [
         {
         id: 1,
@@ -15,6 +17,7 @@ const Survey = () => {
         dateReleased: "2024-03-20",
         age: 32,
         sex: "Female",
+        comments: "The service was excellent and the staff were very helpful."
         },
         {
         id: 2,
@@ -26,6 +29,7 @@ const Survey = () => {
         dateReleased: "2024-03-19",
         age: 45,
         sex: "Male",
+        comments: "I had to wait longer than expected, but overall it was a good experience."
         },
         {
         id: 3,
@@ -37,6 +41,7 @@ const Survey = () => {
         dateReleased: "2024-03-18",
         age: 28,
         sex: "Female",
+        comments: "The process was smooth and the staff were courteous."
         },
     ];
 
@@ -48,29 +53,165 @@ const Survey = () => {
         setSelectedClient(null);
     };
 
-    if (selectedClient) {
-        return (
+if (selectedClient) {
+    return (
         <div className="min-h-screen p-6">
             <div className="max-w-4xl mx-auto">
                 <button
-                    onClick={BackToList}
-                    className="flex items-center gap-2 mb-6 text-blue-600 hover:text-blue-800 transition-colors">
-                    <ChevronLeft className="w-8 h-8" />
-                    Back to Survey Response List
+                onClick={BackToList}
+                className="flex items-center gap-2 mb-6 text-green-600 hover:text-green-800 transition-colors cursor-pointer">
+                <ChevronLeft className="w-8 h-8" />
+                Back to Survey Response List
                 </button>
 
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                    <div className="border-b pb-4 mb-6">
+                <div className="bg-white rounded-lg shadow-lg p-8 max-h-[80vh] overflow-y-auto">
+                <div className="border-b pb-4 mb-6">
                     <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                        <User className="w-7 h-7 text-blue-600" />
-                        {selectedClient.name}
+                    <User className="w-7 h-7 text-gray-600" />
+                    {selectedClient.name}
                     </h2>
+                </div>
+
+                <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 mb-5">
+                    {tabs.map((tab) => (
+                    <li key={tab} className="me-2">
+                        <button
+                        onClick={() => setActiveTab(tab)}
+                        className={`inline-block px-4 py-2 rounded-lg cursor-pointer ${
+                            activeTab === tab
+                            ? "text-white bg-green-700 font-semibold"
+                            : "hover:text-gray-900 hover:bg-gray-100"
+                        }`}>
+                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                        </button>
+                    </li>))}
+                </ul>
+
+                {activeTab === "satisfaction" && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div className="flex flex-col">
+                            <h1 className="font-bold underline">Communication</h1>
+                            <h2 className="font-bold">
+                                I easily found the information about 
+                                my transaction from the office or its website.
+                            </h2>
+                            <p className="mb-2">
+                                (Mabilis at madali akong nakahanap ng 
+                                impormasyon tungkol sa aking transakyon mula 
+                                sa opisina o sa website nito.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
+                        <div className="flex flex-col">
+                            <h1 className="font-bold underline">Cost</h1>
+                            <h2 className="font-bold">
+                                I paid a reasonable amount of fees for my transaction.
+                            </h2>
+                            <p className="mb-2">
+                                (Nagbayad ako ng makatwirang halaga para sa aking transakyon.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
+                        <div className="flex flex-col">
+                            <h1 className="font-bold underline">Integrity</h1>
+                            <h2 className="font-bold">
+                                I feel the office was fair to everyont, or 
+                                “walang palakasan”, during my transaction.
+                            </h2>
+                            <p className="mb-2">
+                                (Pakiramdam ko ay patas ang opisina sa lahat o 
+                                “walang palakasan”, sa aking transakyon.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
+                        <div className="flex flex-col">
+                            <h1 className="font-bold underline">Assurance</h1>
+                            <h2 className="font-bold">
+                                I was trated courteuosly by the staff, and 
+                                (if asked help) the staff was helpful.
+                            </h2>
+                            <p className="mb-2">
+                                (Magalang akong trinato ng mga tauhan, at 
+                                (kung sakali ako ay humingi ng tulong) alam ko 
+                                na sila ay handang tumulong sa akin.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
+                        <div className="flex flex-col">
+                            <h1 className="font-bold underline">Outcome</h1>
+                            <h2 className="font-bold">
+                                I got what I needed from the government office, 
+                                or (if denied) denial of request was sufficiently 
+                                explained to me.
+                            </h2>
+                            <p className="mb-2">
+                                (Nakuha ko ang kinakailangan ko mula sa tanggapan 
+                                ng gobyerno, kung tinanggihan man, ito ay sapat 
+                                na ipaliwanag sa akin.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
+                        <div className="flex flex-col">
+                            <h2 className="font-bold">
+                                I am satisfied with the service that I availed.
+                            </h2>
+                            <p className="mb-2">
+                                (Nasisiyahan ako sa serbisyo na aking natanggap 
+                                sa napuntahan na tanggapan.)
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 justify-center">
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                            <Star className="w-5 h-5 text-gray-300" />
+                        </div>
                     </div>
+                )}
+
+                {activeTab === "comments" && (
+                    <div className="mt-6">
+                    <p className="text-gray-700">
+                        {selectedClient.comments || "No comments provided."}
+                    </p>
+                    </div>
+                )}
                 </div>
             </div>
         </div>
-        );
-    }
+    );
+}
 
     return (
     <div className="p-6 bg-gray-100">
@@ -126,8 +267,7 @@ const Survey = () => {
                         <tr
                         key={client.id}
                         onClick={() => RowClick(client)}
-                        className="border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors duration-200"
-                        >
+                        className="border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors duration-200">
                         <td className="p-4 text-gray-600">{client.name}</td>
                         <td className="p-4 text-gray-600">{client.email}</td>
                         <td className="p-4 text-gray-600">{client.serviceAvailed}</td>
