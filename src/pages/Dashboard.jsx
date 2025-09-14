@@ -1,4 +1,4 @@
-import { Users, Map, LayoutGrid } from "lucide-react";
+import { Users, Map, BarChart3 } from "lucide-react";
 import {
     LineChart,
     Line,
@@ -78,7 +78,7 @@ const Dashboard = () => {
 
                 <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <LayoutGrid className="w-8 h-8 text-green-700" />
+                        <BarChart3 className="w-8 h-8 text-green-700" />
                         <span className="font-medium">Dashboard Activity</span>
                     </div>
                     <span className="text-2xl font-bold">11</span>
