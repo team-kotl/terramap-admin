@@ -209,12 +209,12 @@ const Users = () => {
       {isEditModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-out">
-            <div className="bg-blue-700 rounded-t-xl px-6 py-4">
+            <div className="bg-green-800 rounded-t-xl px-6 py-4">
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold text-white">Edit User</h2>
                 <button
                   onClick={() => setIsEditModalOpen(false)}
-                  className="text-blue-100 hover:text-white hover:bg-blue-500 rounded-full p-1 transition-colors duration-200"
+                  className="text-green-100 hover:text-white hover:bg-green-700 rounded-full p-1 transition-colors duration-200"
                 >
                   <CircleX className="h-6 w-6" />
                 </button>
@@ -230,7 +230,7 @@ const Users = () => {
                   <input
                     type="text"
                     placeholder="Enter username"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500  placeholder-gray-400"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
                   />
                 </div>
 
@@ -241,7 +241,7 @@ const Users = () => {
                   <input
                     type="text"
                     placeholder="Enter role"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500  placeholder-gray-400"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
                   />
                 </div>
 
@@ -252,7 +252,7 @@ const Users = () => {
                   <input
                     type="text"
                     placeholder="Enter remarks"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500  placeholder-gray-400"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
                   />
                 </div>
 
@@ -263,7 +263,7 @@ const Users = () => {
                   <input
                     type="password"
                     placeholder="Enter new password (optional)"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500  placeholder-gray-400"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
                   />
                 </div>
 
@@ -277,7 +277,7 @@ const Users = () => {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                    className="flex-1 px-6 py-3 bg-green-700 text-white rounded-lg font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                   >
                     Update User
                   </button>
