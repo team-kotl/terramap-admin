@@ -88,7 +88,7 @@ const Survey = () => {
 if (selectedClient) {
     return (
         <div className="min-h-screen p-6">
-            <div className="max-w-4xl mx-auto">
+            <div className="full">
                 <button
                 onClick={BackToList}
                 className="flex items-center gap-2 mb-6 text-green-600 hover:text-green-800 transition-colors cursor-pointer">
