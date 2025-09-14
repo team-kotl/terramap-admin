@@ -5,15 +5,15 @@ const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const users = [
-    {staffId: "ST001", username: "janedoe", role: "Admin", remarks: "Benguet" },
-    {staffId: "ST002", username: "justincabuena", role: "Staff", remarks: "Benguet"},
-    {staffId: "ST003", username: "andrewigs", role: "Staff", remarks: "Ifugao"},
-    {staffId: "ST004", username: "bryce", role: "Manager", remarks: "Kalinga"},
-    {staffId: "ST005", username: "stephdrew", role: "Staff", remarks: "Mt. Province"},
-    {staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
-    {staffId: "ST007", username: "petergrf", role: "Admin", remarks: "Kalinga"},
-    {staffId: "ST008", username: "mgnfox", role: "Staff", remarks: "Apayao" },
-    {staffId: "ST009", username: "lee", role: "Staff", remarks: "Ifugao" },
+    { staffId: "ST001", username: "janedoe", role: "Admin", remarks: "Benguet",},
+    { staffId: "ST002", username: "justincabuena", role: "Staff", remarks: "Benguet",},
+    { staffId: "ST003", username: "andrewigs", role: "Staff", remarks: "Ifugao",},
+    { staffId: "ST004", username: "bryce", role: "Manager", remarks: "Kalinga",},
+    { staffId: "ST005", username: "stephdrew", role: "Staff", remarks: "Mt. Province",},
+    { staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
+    { staffId: "ST007", username: "petergrf", role: "Admin", remarks: "Kalinga",},
+    { staffId: "ST008", username: "mgnfox", role: "Staff", remarks: "Apayao" },
+    { staffId: "ST009", username: "lee", role: "Staff", remarks: "Ifugao" },
   ];
 
   return (
@@ -81,67 +81,76 @@ const Users = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-md shadow-lg p-6 w-96 relative">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-green-800">Add New User</h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-red-600"
-              >
-                <CircleX className="h-6 w-6" />
-              </button>
-            </div>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter username"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-0"
-                />
-              </div>
-               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Role
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter role"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-0"
-                />
-              </div>
-               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Remarks
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter remarks"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-0"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  placeholder="Enter password"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-0"
-                />
-              </div>
-              <div className="flex justify-center">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-out">
+            <div className="bg-green-800 rounded-t-xl px-6 py-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-bold text-white">Add New User</h2>
                 <button
-                  type="submit"
-                  className="px-15 py-2 mt-3 bg-green-700 hover:bg-green-800 text-white rounded-md font-semibold justify-center"
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-green-100 hover:text-white hover:bg-green-700 rounded-full p-1 transition-colors duration-200"
                 >
-                  Confirm
+                  <CircleX className="h-6 w-6" />
                 </button>
               </div>
-            </form>
+            </div>
+
+            <div className="px-6 py-6">
+              <form className="space-y-5">
+                <div className="space-y-1">
+                  <label className="block text-sm font-semibold text-gray-700">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter username"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-400"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-sm font-semibold text-gray-700">
+                    Role
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter role"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-sm font-semibold text-gray-700">
+                    Remarks
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter remarks"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-sm font-semibold text-gray-700">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Enter password"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-700  placeholder-gray-40"
+                  />
+                </div>
+
+                <div className="pt-2 flex justify-center">
+                  <button
+                    type="submit"
+                    className="px-15 py-3 bg-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}
