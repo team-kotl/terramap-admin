@@ -2,11 +2,13 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import {LayoutDashboard, Users, Map, BarChart3, SquarePen, DownloadCloud, User, Sun, Moon, Menu, X
 } from "lucide-react";
+import ProfileModal from "../ProfileModal";
 
 const Sidebar = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+    
     const NavLinks = () => (
         <ul className="space-y-8 mt-8 pl-4">
         <li>
@@ -85,13 +87,19 @@ const Sidebar = () => {
     );
 
     const UserSection = () => (
-        <div className="flex items-center gap-3 p-4 bg-green-800 rounded-lg cursor-pointer hover:bg-green-900 shadow-xl">
+        <div
+            onClick={() => setIsProfileOpen(true)}
+            className="flex items-center gap-3 p-4 bg-green-800 rounded-lg cursor-pointer hover:bg-green-900 shadow-xl">
             <User size={30} className="text-white" />
             <div className="flex flex-row items-center w-full">
                 <p className="text-sm font-semibold text-white">superadmin</p>
                 <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="cursor-pointer ml-auto p-1 rounded-full hover:bg-gray-400/50">
+                onClick={(e) => {
+                    e.stopPropagation(); // prevents modal from opening if you only click toggle
+                    setDarkMode(!darkMode);
+                }}
+                className="cursor-pointer ml-auto p-1 rounded-full hover:bg-gray-400/50"
+                >
                 {darkMode ? (
                     <Moon size={20} className="text-gray-300" />
                 ) : (
@@ -156,6 +164,7 @@ const Sidebar = () => {
             </div>
             <UserSection />
         </div>
+            {isProfileOpen && <ProfileModal onClose={() => setIsProfileOpen(false)} />}
         </>
     );
 };
