@@ -45,11 +45,11 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-100 px-2 md:px-6 py-6">
+        <div className="min-h-screen bg-gray-100 px-2 md:px-6 py-15">
             {/* Header */}
-            <div className="flex justify-between items-center mb-6 mt-3">
+            <div className="flex justify-between items-center md:mb-6 mb-4 mt-3">
                 <h1 className="text-green-700 font-bold text-2xl">Dashboard</h1>
-                <p className="text-green-700 font-bold text-2xl">
+                <p className="text-green-700 font-bold md:text-2xl text-lg">
                     {new Date().toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",

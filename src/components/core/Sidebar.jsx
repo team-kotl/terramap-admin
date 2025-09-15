@@ -106,7 +106,7 @@ const Sidebar = () => {
         <>
         {/* Burger button on mobile (top-left) */}
         <button
-            className="md:hidden absolute top-4 left-4 z-50 p-2"
+            className="md:hidden absolute top-10 left-5 z-50 p-2"
             onClick={() => setIsOpen(true)}>
             <Menu size={28} className="text-gray-800" />
         </button>
@@ -136,14 +136,14 @@ const Sidebar = () => {
             <div className="fixed inset-0 bg-gray-200 z-50 flex flex-col justify-between p-4">
             {/* Close button */}
             <button
-                className="absolute top-4 right-4"
+                className="absolute top-10 right-4"
                 onClick={() => setIsOpen(false)}>
                 <X size={32} />
             </button>
 
             {/* Top Section */}
             <div>
-                <div className="mt-3 mb-3 flex flex-row items-center justify-center gap-2">
+                <div className="mt-10 mb-3 flex flex-row items-center justify-center gap-2">
                 <img
                     src="src/assets/DENR-logo.svg"
                     alt="DENR Logo"
