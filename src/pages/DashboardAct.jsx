@@ -130,7 +130,7 @@ const DashboardActivity = () => {
                         superadmin
                     </span>
                 </div>
-                <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-6">Dashboard Activity Logs</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-6">Dashboard Activity</h1>
                 {/* Table */}
                 <div className="bg-white shadow rounded overflow-x-auto">
                     <table className="table-auto w-full border-collapse min-w-[600px]">

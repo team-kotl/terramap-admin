@@ -30,7 +30,7 @@ const AtlasActivity = () => {
                         superadmin
                     </span>
                 </div>
-                <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-6">Atlas Activity Logs</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-6">Atlas Activity</h1>
                 {/* Table */}
                 <div className="bg-white shadow rounded overflow-x-auto">
                     <table className="table-auto w-full border-collapse min-w-[600px]">
@@ -52,7 +52,7 @@ const AtlasActivity = () => {
                         {logs.map((item) => (
                             <tr
                             key={item.id}
-                            className="border-b border-gray-200 text-sm md:text-base">
+                            className="border-b border-gray-200 hover:bg-gray-100 text-sm md:text-base">
                             <td className="pl-4 md:pl-6 py-2 md:py-3">{item.id}</td>
                             <td className="px-2 md:px-4 py-2 md:py-3">{item.ipv4}</td>
                             <td className="px-2 md:px-4 py-2 md:py-3">{item.agent}</td>

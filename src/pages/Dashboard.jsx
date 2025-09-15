@@ -45,11 +45,10 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-100 px-2 md:px-6 py-15">
-            {/* Header */}
+        <div className="min-screen bg-gray-100 px-2 md:px-6 py-15">
             <div className="flex justify-between items-center md:mb-6 mb-4 mt-3">
-                <h1 className="text-green-700 font-bold text-2xl">Dashboard</h1>
-                <p className="text-green-700 font-bold md:text-2xl text-lg">
+                <h1 className="text-green-800 font-bold text-2xl md:text-3xl">Dashboard</h1>
+                <p className="text-green-800 font-bold md:text-3xl text-lg">
                     {new Date().toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -58,7 +57,6 @@ const Dashboard = () => {
                 </p>
             </div>
 
-            {/* Top Cards */}
             <div className="grid grid-rows-1 md:grid-cols-3 gap-4 mb-4">
                 <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between ">
                     <div className="flex items-center gap-3">
@@ -85,14 +83,12 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* Grid layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Left column: Source of Traffic */}
                 <div className="bg-white shadow rounded-lg px-3 md:px-6 py-4 flex flex-col h-full">
                     <h2 className="text-green-700 font-semibold mb-4">
                         Source of Traffic (By count)
                     </h2>
-
                     {/* Table section */}
                     <div className="flex-grow">
                         <div className="w-full border border-gray-200 rounded-lg overflow-hidden">
@@ -112,7 +108,6 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    {/* Total Places with highlighted card style */}
                     <div className="mt-4 bg-green-50 border border-green-200 rounded-md px-2 md:px-4 py-3 flex justify-between items-center font-semibold text-green-800">
                         <span>Total Places</span>
                         <span>17</span>
