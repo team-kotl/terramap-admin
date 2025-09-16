@@ -54,7 +54,7 @@ const AtlasActivity = () => {
                             key={item.id}
                             className={`border-b border-gray-200 text-sm md:text-base ${
                                 index % 2 === 0 ? "bg-gray-100" : "bg-white"
-                                } hover:bg-gray-100`}>
+                                } `}>
                             <td className="pl-4 md:pl-6 py-2 md:py-3">{item.id}</td>
                             <td className="px-2 md:px-4 py-2 md:py-3">{item.ipv4}</td>
                             <td className="px-2 md:px-4 py-2 md:py-3">{item.agent}</td>

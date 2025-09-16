@@ -3,8 +3,8 @@ import { useState } from "react";
 
 const Survey = () => {
     const [selectedClient, setSelectedClient] = useState(null);
-    const [activeTab, setActiveTab] = useState("satisfaction");
-    const tabs = ["satisfaction", "comments"];
+    const [activeTab, setActiveTab] = useState("rating");
+    const tabs = ["rating", "comments"];
     const surveyResponses = [
         {
         id: 1,
@@ -119,7 +119,7 @@ if (selectedClient) {
                         </li>))}
                     </ul>
 
-                    {activeTab === "satisfaction" && (
+                    {activeTab === "rating" && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             <div className="flex flex-col">
                                 <h1 className="font-bold underline">Communication</h1>
@@ -242,36 +242,39 @@ if (selectedClient) {
                     </tr>
                 </thead>
                     <tbody>
-                    {surveyResponses.map((client) => (
-                        <tr
-                        key={client.id}
-                        onClick={() => RowClick(client)}
-                        className="border-b border-gray-200 hover:bg-blue-50 text-sm md:text-base cursor-pointer">
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.name}</td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.email}</td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.serviceAvailed}</td>
-                        <td className="p-4">
-                            <span
-                            className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
-                                client.typeOfClient === "Citizen/Representative"
-                                ? "bg-green-100 text-green-800"
-                                : client.typeOfClient === "Business"
-                                ? "bg-blue-100 text-blue-800"
-                                : client.typeOfClient === "Organization"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : client.typeOfClient === "Government"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-gray-100 text-gray-800"
-                            }`}>
-                            {client.typeOfClient}
-                            </span>
-                        </td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.dateSubmitted}</td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.dateReleased}</td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.age}</td>
-                        <td className="px-2 md:px-4 py-2 md:py-3">{client.sex}</td>
-                        </tr>
-                    ))}
+                        {surveyResponses.map((client, index) => (
+                            <tr
+                            key={client.id}
+                            onClick={() => RowClick(client)}
+                            className={`border-b border-gray-200 text-sm md:text-base cursor-pointer ${
+                                        index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                                        } hover:bg-blue-50`}>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.name}</td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.email}</td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.serviceAvailed}</td>
+                            <td className="p-4">
+                                <span
+                                className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
+                                    client.typeOfClient === "Citizen/Representative"
+                                    ? "bg-green-100 text-green-800"
+                                    : client.typeOfClient === "Business"
+                                    ? "bg-blue-100 text-blue-800"
+                                    : client.typeOfClient === "Organization"
+                                    ? "bg-yellow-100 text-yellow-800"
+                                    : client.typeOfClient === "Government"
+                                    ? "bg-red-100 text-red-800"
+                                    : "bg-gray-100 text-gray-800"
+                                }`}
+                                >
+                                {client.typeOfClient}
+                                </span>
+                            </td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.dateSubmitted}</td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.dateReleased}</td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.age}</td>
+                            <td className="px-2 md:px-4 py-2 md:py-3">{client.sex}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
