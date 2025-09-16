@@ -1,4 +1,4 @@
-import { Search, CirclePlus, Pencil, Trash, CircleX } from "lucide-react";
+import { Search, CirclePlus, Pencil, Archive, CircleX, ListFilter } from "lucide-react";
 import { useState } from "react";
 
 const Users = () => {
@@ -119,13 +119,13 @@ const Users = () => {
         <table className="table-auto w-full border-collapse">
           <thead>
             <tr className="bg-green-800 text-white text-left">
-              <th className="pl-12 py-3 w-1/12"> Staff ID</th>
-              <th className="px-4 py-3 w-1/12">Username</th>
+              <th className="px-4 py-3 w-1/12">Staff ID</th>
+              <th className="px-4 py-3 w-2/12">Username</th>
               <th className="px-4 py-3 w-2/12">Roles</th>
-              <th className="px-4 py-3 w-1/12">Province</th>
-              <th className="px-4 py-3 w-1/12">Municipality</th>
+              <th className="px-4 py-3 w-2/12">Province</th>
+              <th className="px-4 py-3 w-2/12">Municipality</th>
               <th className="px-4 py-3 w-2/12">Remarks</th>
-              <th className="px-4 py-3 w-1/12">Action</th>
+              <th className="px-4 py-3 w-1/12 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -134,9 +134,9 @@ const Users = () => {
                 key={user.staffId}
                 className="border-b border-gray-200 hover:bg-gray-50"
               >
-                <td className="pl-12 py-3">{user.staffId}</td>
+                <td className="px-4 py-3">{user.staffId}</td>
                 <td className="px-4 py-3">{user.username}</td>
-                <td className="px-2 py-3">
+                <td className="px-4 py-3 min-w-[120px]">
                   <div className="flex flex-wrap gap-2">
                     {user.roles.map((role, index) => {
                       const roleMap = {
@@ -156,7 +156,7 @@ const Users = () => {
                       return (
                         <span
                           key={index}
-                          className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-xs font-semibold ${
+                          className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-semibold ${
                             roleMap[role]?.color || "bg-gray-100 text-gray-800"
                           }`}
                         >
@@ -169,17 +169,15 @@ const Users = () => {
                 <td className="px-4 py-3">{user.province}</td>
                 <td className="px-4 py-3">{user.municipality}</td>
                 <td className="px-4 py-3">{user.remarks}</td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 text-center">
                   <button
-                    onClick={() => {
-                      setIsEditModalOpen(true);
-                    }}
+                    onClick={() => setIsEditModalOpen(true)}
                     className="text-gray-500 hover:text-blue-500"
                   >
                     <Pencil className="h-5 w-5" />
                   </button>
                   <button className="text-red-400 hover:text-red-500 ml-3">
-                    <Trash className="h-5 w-5" />
+                    <Archive className="h-5 w-5" />
                   </button>
                 </td>
               </tr>
