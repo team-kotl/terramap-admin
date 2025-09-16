@@ -15,13 +15,13 @@ const AtlasActivity = () => {
 
     return (
         <div className="relative bg-gray-100 min-screen">
-            <div className="p-1 md:p-5 mt-15 md:mt-0">
+            <div className="md:p-5">
                 <div className="flex flex-row md:justify-between md:items-center bg-white shadow p-2 rounded mb-6 gap-3 mt-5 ">
                     <div className="relative flex-1">
                         <Search className="absolute left-2 md:top-2 top-1 h-5 w-5 text-gray-500" />
                         <input
                         type="text"
-                        placeholder="Search Users"
+                        placeholder="Search logs"
                         className="pl-10 md:pr-2 md:py-2 pr-2 py-1 rounded-md text-base w-full focus:outline-none focus:ring-0"
                         />
                     </div>

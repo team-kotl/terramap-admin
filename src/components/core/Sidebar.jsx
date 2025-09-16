@@ -28,7 +28,6 @@ const Sidebar = () => {
             )}
         </NavLink>
         </li>
-
         <li>
         <NavLink
             to="/users"
@@ -46,7 +45,6 @@ const Sidebar = () => {
             )}
         </NavLink>
         </li>
-
         <li>
         <NavLink
             to="/atlas-activity"
@@ -64,7 +62,6 @@ const Sidebar = () => {
             )}
         </NavLink>
         </li>
-
         <li>
         <NavLink
             to="/dashboard-activity"
@@ -82,7 +79,6 @@ const Sidebar = () => {
             )}
         </NavLink>
         </li>
-
         <li>
         <NavLink
             to="/download"
@@ -100,7 +96,6 @@ const Sidebar = () => {
             )}
         </NavLink>
         </li>
-
         <li>
         <NavLink
             to="/survey"

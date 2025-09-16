@@ -210,7 +210,7 @@ if (selectedClient) {
 }
 
     return (
-    <div className="p-1 md:p-5 mt-15 md:mt-0 bg-gray-100">
+    <div className="p-1 md:p-5 mt-5 md:mt-0 bg-gray-100">
         <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-1">
         Client Satisfaction Survey
         </h1>
@@ -227,7 +227,7 @@ if (selectedClient) {
                 </div>
             </div>
 
-            <div className="bg-white rounded overflow-x-auto">
+            <div className="bg-white overflow-x-auto shadow rounded">
             <table className="table-auto w-full border-collapse min-w-[600px]">
                 <thead>
                     <tr className="bg-green-800 text-white text-left text-sm md:text-base">
@@ -246,7 +246,7 @@ if (selectedClient) {
                             <tr
                             key={client.id}
                             onClick={() => RowClick(client)}
-                            className={`border-b border-gray-200 text-sm md:text-base cursor-pointer ${
+                            className={`border-b border-gray-100 text-sm md:text-base cursor-pointer ${
                                         index % 2 === 0 ? "bg-gray-100" : "bg-white"
                                         } hover:bg-blue-50`}>
                             <td className="px-2 md:px-4 py-2 md:py-3">{client.name}</td>

@@ -19,7 +19,7 @@ const Users = () => {
 
     return (
         <div className="relative bg-gray-100 min-screen">
-            <div className="p-1 md:p-5 mt-15 md:mt-0">
+            <div className="md:p-5 mt-15 md:mt-0">
                 <div className="flex flex-row md:justify-between md:items-center bg-white shadow p-2 rounded mb-6 gap-3 mt-5 ">
                     <div className="relative flex-1">
                         <Search className="absolute left-2 md:top-2 top-1 h-5 w-5 text-gray-500" />
@@ -104,7 +104,6 @@ const Users = () => {
                             <option>Staff</option>
                         </select>
                         <input type="text" placeholder="Remarks" className="w-full border rounded-md p-2" />
-
                         <button
                             type="submit"
                             className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full">
