@@ -57,29 +57,29 @@ const Dashboard = () => {
                 </p>
             </div>
 
-            <div className="grid grid-rows-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between ">
-                    <div className="flex items-center gap-3">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <Users className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Users</span>
+                        <p className="font-medium text-center">Users</p>
                     </div>
                     <span className="text-2xl font-bold">12</span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <Map className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Atlas Activity</span>
+                        <p className="font-medium text-center">Atlas Activity</p>
                     </div>
                     <span className="text-2xl font-bold">10</span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <BarChart3 className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Dashboard Activity</span>
+                        <p className="font-medium text-center">Dashboard Activity</p>
                     </div>
-                    <span className="text-2xl font-bold">11</span>
+                    <p className="text-2xl font-bold">11</p>
                 </div>
             </div>
 

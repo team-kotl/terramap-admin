@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {LayoutDashboard, Users, Map, BarChart3, SquarePen, DownloadCloud, User, Sun, Moon, Menu, X
 } from "lucide-react";
 import ProfileModal from "../ProfileModal";
@@ -8,7 +8,7 @@ const Sidebar = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
-    
+    const [scrolled, setScrolled] = useState(false);
     const NavLinks = () => (
         <ul className="space-y-8 mt-8 pl-4">
         <li>
@@ -110,13 +110,31 @@ const Sidebar = () => {
         </div>
     );
 
+    useEffect(() => {
+        const handleScroll = () => {
+        if (window.scrollY > 10) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <>
-        <button
-            className="md:hidden absolute top-10 left-5 z-50 p-2 cursor-pointer rounded-md bg-gray-100 shadow-sm"
-            onClick={() => setIsOpen(true)}>
-            <Menu size={28} className="text-gray-800" />
-        </button>
+        <div
+            className={`md:hidden fixed top-10 left-0 w-full z-50 flex items-center gap-2 px-8 py-3 transition-colors duration-300 ${
+                scrolled ? "bg-gray-200 shadow-md" : "bg-transparent"}`}>
+            <button
+                onClick={() => setIsOpen(true)}
+                className="cursor-pointer bg-gray-100 px-3 py-2 rounded-md shadow-sm">
+                <Menu size={28} className="text-gray-800" />
+            </button>
+            <span className="text-2xl font-bold text-green-800">DENR-CAR</span>
+        </div>
 
         {/* Desktop Sidebar */}
         <aside className="hidden md:flex w-80 h-screen bg-gray-200 text-secondary p-4 flex-col justify-between">
@@ -125,8 +143,7 @@ const Sidebar = () => {
                     <img
                     src="src/assets/DENR-logo.svg"
                     alt="DENR Logo"
-                    className="w-15 h-15"
-                    />
+                    className="w-15 h-15"/>
                     <h2 className="text-md font-bold mb-6 text-black mt-5 justify-center text-left">
                     Department of Environment and Natural Resources <br />
                     <span className="font-semibold">CAR</span>
