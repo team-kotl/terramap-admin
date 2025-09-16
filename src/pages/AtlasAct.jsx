@@ -22,7 +22,7 @@ const AtlasActivity = () => {
                         <input
                         type="text"
                         placeholder="Search Users"
-                        className="pl-10 md:pr-3 md:py-2 pr-2 py-1 rounded-md text-sm w-full focus:outline-none focus:ring-0"
+                        className="pl-10 md:pr-2 md:py-2 pr-2 py-1 rounded-md text-base w-full focus:outline-none focus:ring-0"
                         />
                     </div>
                     <div className="hidden md:block w-px h-6 bg-gray-400"></div>
