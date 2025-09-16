@@ -23,7 +23,7 @@ This is a web application for the IT adminstrators of DENR-CAR.
 
 ### Built With
 
-[[![React][React.js]][React-url] [![Tailwind][Tailwind.icon]][Tailwind-url]]
+[![React][React.js]][React-url] [![Tailwind][Tailwind.icon]][Tailwind-url]
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -48,8 +48,6 @@ You must have [node](https://nodejs.org/dist/v22.11.0/node-v22.11.0-x64.msi) ins
    ```
 
 ### How to run the application
-
-> NOTE: The application's database is hosted in a cloud platform.
 
 1. Run the terramap
 ```bash
