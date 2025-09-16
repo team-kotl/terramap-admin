@@ -5,80 +5,80 @@ const Users = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
- const users = [
-  {
-    staffId: "ST001",
-    username: "janedoe",
-    roles: ["D", "U", "A"], 
-    province: "Benguet",
-    municipality: "La Trinidad",
-    remarks: ""
-  },
-  {
-    staffId: "ST002",
-    username: "justincabuena",
-    roles: ["U", "A"], 
-    province: "Benguet",
-    municipality: "Itogon",
-    remarks: "",
-  },
-  {
-    staffId: "ST003",
-    username: "andrewigs",
-    roles: ["D"], 
-    province: "Ifugao",
-    municipality: "Lagawe",
-    remarks: "",
-  },
-  {
-    staffId: "ST004",
-    username: "bryce",
-    roles: ["D", "Ap"], 
-    province: "Kalinga",
-    municipality: "Tabuk",
-    remarks: "",
-  },
-  {
-    staffId: "ST005",
-    username: "stephdrew",
-    roles: ["C"], 
-    province: "Mt. Province",
-    municipality: "Bontoc",
-    remarks: "",
-  },
-  {
-    staffId: "ST006",
-    username: "morrows",
-    roles: ["U"], 
-    province: "Abra",
-    municipality: "Bangued",
-    remarks: "",
-  },
-  {
-    staffId: "ST007",
-    username: "petergrf",
-    roles: ["A", "C"], 
-    province: "Kalinga",
-    municipality: "Tabuk",
-    remarks: "",
-  },
-  {
-    staffId: "ST008",
-    username: "mgnfox",
-    roles: ["D", "U"],
-    province: "Apayao",
-    municipality: "Conner",
-    remarks: "",
-  },
-  {
-    staffId: "ST009",
-    username: "lee",
-    roles: ["D"], 
-    province: "Ifugao",
-    municipality: "Kiangan",
-    remarks: "",
-  },
-];
+  const users = [
+    {
+      staffId: "ST001",
+      username: "janedoe",
+      roles: ["D", "U", "A"],
+      province: "Benguet",
+      municipality: "La Trinidad",
+      remarks: "",
+    },
+    {
+      staffId: "ST002",
+      username: "justincabuena",
+      roles: ["U", "A"],
+      province: "Benguet",
+      municipality: "Itogon",
+      remarks: "",
+    },
+    {
+      staffId: "ST003",
+      username: "andrewigs",
+      roles: ["D"],
+      province: "Ifugao",
+      municipality: "Lagawe",
+      remarks: "",
+    },
+    {
+      staffId: "ST004",
+      username: "bryce",
+      roles: ["D", "Ap"],
+      province: "Kalinga",
+      municipality: "Tabuk",
+      remarks: "",
+    },
+    {
+      staffId: "ST005",
+      username: "stephdrew",
+      roles: ["C"],
+      province: "Mt. Province",
+      municipality: "Bontoc",
+      remarks: "",
+    },
+    {
+      staffId: "ST006",
+      username: "morrows",
+      roles: ["U"],
+      province: "Abra",
+      municipality: "Bangued",
+      remarks: "",
+    },
+    {
+      staffId: "ST007",
+      username: "petergrf",
+      roles: ["A", "C"],
+      province: "Kalinga",
+      municipality: "Tabuk",
+      remarks: "",
+    },
+    {
+      staffId: "ST008",
+      username: "mgnfox",
+      roles: ["D", "U"],
+      province: "Apayao",
+      municipality: "Conner",
+      remarks: "",
+    },
+    {
+      staffId: "ST009",
+      username: "lee",
+      roles: ["D"],
+      province: "Ifugao",
+      municipality: "Kiangan",
+      remarks: "",
+    },
+  ];
 
   return (
     <div className="relative p-6 bg-gray-100">
@@ -98,15 +98,21 @@ const Users = () => {
 
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-green-800">Users</h1>
-        <button
-          onClick={() => {
-            setIsAddModalOpen(true);
-          }}
-          className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md"
-        >
-          <CirclePlus className="h-5 w-5" />
-          Add User
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              setIsAddModalOpen(true);
+            }}
+            className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md"
+          >
+            <CirclePlus className="h-5 w-5" />
+            Add User
+          </button>
+
+          <button className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md">
+            <ListFilter className="h-5 w-5" />
+          </button>
+        </div>
       </div>
 
       <div className="bg-white shadow rounded overflow-x-auto">
@@ -134,17 +140,17 @@ const Users = () => {
                   <div className="flex flex-wrap gap-2">
                     {user.roles.map((role, index) => {
                       const roleMap = {
-                        D: { label: "D", color: "bg-blue-100 text-blue-800" }, 
-                        U: { label: "U", color: "bg-green-100 text-green-800" }, 
+                        D: { label: "D", color: "bg-blue-100 text-blue-800" },
+                        U: { label: "U", color: "bg-green-100 text-green-800" },
                         A: {
                           label: "A",
                           color: "bg-yellow-100 text-yellow-800",
-                        }, 
+                        },
                         Ap: {
                           label: "AP",
                           color: "bg-purple-100 text-purple-800",
-                        }, 
-                        C: { label: "C", color: "bg-pink-100 text-pink-800" }, 
+                        },
+                        C: { label: "C", color: "bg-pink-100 text-pink-800" },
                       };
 
                       return (
