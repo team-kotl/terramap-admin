@@ -1,4 +1,4 @@
-import { Search, CirclePlus, Pencil, Trash, CircleX } from "lucide-react";
+import { Search, CirclePlus, Pencil, Archive, CircleX, ListFilter } from "lucide-react";
 import { useState } from "react";
 
 const Users = () => {
@@ -9,49 +9,74 @@ const Users = () => {
     {
       staffId: "ST001",
       username: "janedoe",
-      role: "Admin",
-      remarks: "Benguet",
+      roles: ["D", "U", "A"],
+      province: "Benguet",
+      municipality: "La Trinidad",
+      remarks: "",
     },
     {
       staffId: "ST002",
       username: "justincabuena",
-      role: "Staff",
-      remarks: "Benguet",
+      roles: ["U", "A"],
+      province: "Benguet",
+      municipality: "Itogon",
+      remarks: "",
     },
     {
       staffId: "ST003",
       username: "andrewigs",
-      role: "Staff",
-      remarks: "Ifugao",
+      roles: ["D"],
+      province: "Ifugao",
+      municipality: "Lagawe",
+      remarks: "",
     },
     {
       staffId: "ST004",
       username: "bryce",
-      role: "Manager",
-      remarks: "Kalinga",
+      roles: ["D", "Ap"],
+      province: "Kalinga",
+      municipality: "Tabuk",
+      remarks: "",
     },
     {
       staffId: "ST005",
       username: "stephdrew",
-      role: "Staff",
-      remarks: "Mt. Province",
+      roles: ["C"],
+      province: "Mt. Province",
+      municipality: "Bontoc",
+      remarks: "",
     },
-    { staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
+    {
+      staffId: "ST006",
+      username: "morrows",
+      roles: ["U"],
+      province: "Abra",
+      municipality: "Bangued",
+      remarks: "",
+    },
     {
       staffId: "ST007",
       username: "petergrf",
-      role: "Admin",
-      remarks: "Kalinga",
+      roles: ["A", "C"],
+      province: "Kalinga",
+      municipality: "Tabuk",
+      remarks: "",
     },
-    { staffId: "ST008", 
-      username: "mgnfox", 
-      role: "Staff", 
-      remarks: "Apayao" 
+    {
+      staffId: "ST008",
+      username: "mgnfox",
+      roles: ["D", "U"],
+      province: "Apayao",
+      municipality: "Conner",
+      remarks: "",
     },
-    { staffId: "ST009", 
-      username: "lee", 
-      role: "Staff", 
-      remarks: "Ifugao" 
+    {
+      staffId: "ST009",
+      username: "lee",
+      roles: ["D"],
+      province: "Ifugao",
+      municipality: "Kiangan",
+      remarks: "",
     },
   ];
 
@@ -73,26 +98,34 @@ const Users = () => {
 
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-green-800">Users</h1>
-        <button
-          onClick={() => {
-            setIsAddModalOpen(true);
-          }}
-          className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md"
-        >
-          <CirclePlus className="h-5 w-5" />
-          Add User
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              setIsAddModalOpen(true);
+            }}
+            className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md"
+          >
+            <CirclePlus className="h-5 w-5" />
+            Add User
+          </button>
+
+          <button className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 rounded-md">
+            <ListFilter className="h-5 w-5" />
+          </button>
+        </div>
       </div>
 
       <div className="bg-white shadow rounded overflow-x-auto">
         <table className="table-auto w-full border-collapse">
           <thead>
             <tr className="bg-green-800 text-white text-left">
-              <th className="pl-12 py-3 text-left w-1/6">Staff ID</th>
-              <th className="px-4 py-3 w-1/6">Username</th>
-              <th className="px-2 py-3 w-1/6">Role</th>
-              <th className="px-4 py-3 w-1/6">Remarks</th>
-              <th className="px-6 py-3 w-1/9">Action</th>
+              <th className="px-4 py-3 w-1/12">Staff ID</th>
+              <th className="px-4 py-3 w-2/12">Username</th>
+              <th className="px-4 py-3 w-2/12">Roles</th>
+              <th className="px-4 py-3 w-2/12">Province</th>
+              <th className="px-4 py-3 w-2/12">Municipality</th>
+              <th className="px-4 py-3 w-2/12">Remarks</th>
+              <th className="px-4 py-3 w-1/12 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -101,21 +134,50 @@ const Users = () => {
                 key={user.staffId}
                 className="border-b border-gray-200 hover:bg-gray-50"
               >
-                <td className="pl-12 py-3">{user.staffId}</td>
+                <td className="px-4 py-3">{user.staffId}</td>
                 <td className="px-4 py-3">{user.username}</td>
-                <td className="px-2 py-3">{user.role}</td>
+                <td className="px-4 py-3 min-w-[120px]">
+                  <div className="flex flex-wrap gap-2">
+                    {user.roles.map((role, index) => {
+                      const roleMap = {
+                        D: { label: "D", color: "bg-blue-100 text-blue-800" },
+                        U: { label: "U", color: "bg-green-100 text-green-800" },
+                        A: {
+                          label: "A",
+                          color: "bg-yellow-100 text-yellow-800",
+                        },
+                        Ap: {
+                          label: "AP",
+                          color: "bg-purple-100 text-purple-800",
+                        },
+                        C: { label: "C", color: "bg-pink-100 text-pink-800" },
+                      };
+
+                      return (
+                        <span
+                          key={index}
+                          className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-semibold ${
+                            roleMap[role]?.color || "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {roleMap[role]?.label || role}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </td>
+                <td className="px-4 py-3">{user.province}</td>
+                <td className="px-4 py-3">{user.municipality}</td>
                 <td className="px-4 py-3">{user.remarks}</td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 text-center">
                   <button
-                    onClick={() => {
-                      setIsEditModalOpen(true);
-                    }}
+                    onClick={() => setIsEditModalOpen(true)}
                     className="text-gray-500 hover:text-blue-500"
                   >
                     <Pencil className="h-5 w-5" />
                   </button>
                   <button className="text-red-400 hover:text-red-500 ml-3">
-                    <Trash className="h-5 w-5" />
+                    <Archive className="h-5 w-5" />
                   </button>
                 </td>
               </tr>
