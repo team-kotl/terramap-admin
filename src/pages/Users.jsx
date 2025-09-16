@@ -5,55 +5,80 @@ const Users = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const users = [
-    {
-      staffId: "ST001",
-      username: "janedoe",
-      role: "Admin",
-      remarks: "Benguet",
-    },
-    {
-      staffId: "ST002",
-      username: "justincabuena",
-      role: "Staff",
-      remarks: "Benguet",
-    },
-    {
-      staffId: "ST003",
-      username: "andrewigs",
-      role: "Staff",
-      remarks: "Ifugao",
-    },
-    {
-      staffId: "ST004",
-      username: "bryce",
-      role: "Manager",
-      remarks: "Kalinga",
-    },
-    {
-      staffId: "ST005",
-      username: "stephdrew",
-      role: "Staff",
-      remarks: "Mt. Province",
-    },
-    { staffId: "ST006", username: "morrows", role: "Staff", remarks: "Abra" },
-    {
-      staffId: "ST007",
-      username: "petergrf",
-      role: "Admin",
-      remarks: "Kalinga",
-    },
-    { staffId: "ST008", 
-      username: "mgnfox", 
-      role: "Staff", 
-      remarks: "Apayao" 
-    },
-    { staffId: "ST009", 
-      username: "lee", 
-      role: "Staff", 
-      remarks: "Ifugao" 
-    },
-  ];
+ const users = [
+  {
+    staffId: "ST001",
+    username: "janedoe",
+    roles: ["D", "U", "A"], 
+    province: "Benguet",
+    municipality: "La Trinidad",
+    remarks: ""
+  },
+  {
+    staffId: "ST002",
+    username: "justincabuena",
+    roles: ["U", "A"], 
+    province: "Benguet",
+    municipality: "Itogon",
+    remarks: "",
+  },
+  {
+    staffId: "ST003",
+    username: "andrewigs",
+    roles: ["D"], 
+    province: "Ifugao",
+    municipality: "Lagawe",
+    remarks: "",
+  },
+  {
+    staffId: "ST004",
+    username: "bryce",
+    roles: ["D", "Ap"], 
+    province: "Kalinga",
+    municipality: "Tabuk",
+    remarks: "",
+  },
+  {
+    staffId: "ST005",
+    username: "stephdrew",
+    roles: ["C"], 
+    province: "Mt. Province",
+    municipality: "Bontoc",
+    remarks: "",
+  },
+  {
+    staffId: "ST006",
+    username: "morrows",
+    roles: ["U"], 
+    province: "Abra",
+    municipality: "Bangued",
+    remarks: "",
+  },
+  {
+    staffId: "ST007",
+    username: "petergrf",
+    roles: ["A", "C"], 
+    province: "Kalinga",
+    municipality: "Tabuk",
+    remarks: "",
+  },
+  {
+    staffId: "ST008",
+    username: "mgnfox",
+    roles: ["D", "U"],
+    province: "Apayao",
+    municipality: "Conner",
+    remarks: "",
+  },
+  {
+    staffId: "ST009",
+    username: "lee",
+    roles: ["D"], 
+    province: "Ifugao",
+    municipality: "Kiangan",
+    remarks: "",
+  },
+];
 
   return (
     <div className="relative p-6 bg-gray-100">
@@ -88,11 +113,13 @@ const Users = () => {
         <table className="table-auto w-full border-collapse">
           <thead>
             <tr className="bg-green-800 text-white text-left">
-              <th className="pl-12 py-3 text-left w-1/6">Staff ID</th>
-              <th className="px-4 py-3 w-1/6">Username</th>
-              <th className="px-2 py-3 w-1/6">Role</th>
-              <th className="px-4 py-3 w-1/6">Remarks</th>
-              <th className="px-6 py-3 w-1/9">Action</th>
+              <th className="pl-12 py-3 w-1/12"> Staff ID</th>
+              <th className="px-4 py-3 w-1/12">Username</th>
+              <th className="px-4 py-3 w-2/12">Roles</th>
+              <th className="px-4 py-3 w-1/12">Province</th>
+              <th className="px-4 py-3 w-1/12">Municipality</th>
+              <th className="px-4 py-3 w-2/12">Remarks</th>
+              <th className="px-4 py-3 w-1/12">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -103,7 +130,38 @@ const Users = () => {
               >
                 <td className="pl-12 py-3">{user.staffId}</td>
                 <td className="px-4 py-3">{user.username}</td>
-                <td className="px-2 py-3">{user.role}</td>
+                <td className="px-2 py-3">
+                  <div className="flex flex-wrap gap-2">
+                    {user.roles.map((role, index) => {
+                      const roleMap = {
+                        D: { label: "D", color: "bg-blue-100 text-blue-800" }, 
+                        U: { label: "U", color: "bg-green-100 text-green-800" }, 
+                        A: {
+                          label: "A",
+                          color: "bg-yellow-100 text-yellow-800",
+                        }, 
+                        Ap: {
+                          label: "AP",
+                          color: "bg-purple-100 text-purple-800",
+                        }, 
+                        C: { label: "C", color: "bg-pink-100 text-pink-800" }, 
+                      };
+
+                      return (
+                        <span
+                          key={index}
+                          className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-xs font-semibold ${
+                            roleMap[role]?.color || "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {roleMap[role]?.label || role}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </td>
+                <td className="px-4 py-3">{user.province}</td>
+                <td className="px-4 py-3">{user.municipality}</td>
                 <td className="px-4 py-3">{user.remarks}</td>
                 <td className="px-4 py-3">
                   <button
