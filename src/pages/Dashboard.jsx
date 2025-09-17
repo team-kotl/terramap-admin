@@ -37,11 +37,11 @@ const Dashboard = () => {
     ];
 
     const traffic = [
-        { place: "Kalinga", count: 1950 },
-        { place: "Baguio City", count: 1150 },
-        { place: "Benguet", count: 1134 },
-        { place: "Apayao", count: 1028 },
-        { place: "Abra", count: 962 },
+        { place: "Kalinga", count: 4 },
+        { place: "Baguio City", count: 2 },
+        { place: "Benguet", count: 1 },
+        { place: "Apayao", count: 1 },
+        { place: "Abra", count: 2 },
     ];
 
     return (
@@ -116,7 +116,7 @@ const Dashboard = () => {
                     {/* Total Places with highlighted card style */}
                     <div className="mt-4 bg-green-50 border border-green-200 rounded-md px-4 py-3 flex justify-between items-center font-semibold text-green-800">
                         <span>Total Places</span>
-                        <span>17</span>
+                        <span>5</span>
                     </div>
                 </div>
 

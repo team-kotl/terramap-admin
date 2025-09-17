@@ -9,7 +9,7 @@ const Sidebar = () => {
             
             {/* Top Section */}
             <div>
-                <div className="mt-3 mb-3 flex flex-row items-center justify-center gap-2">
+                <div className="mt-3 mb-3 flex flex-row items-center justify-left gap-2">
                     <img src="src/assets/DENR-logo.svg" alt="DENR Logo" className="w-15 h-15"/>
                     <h2 className="text-md font-bold mb-6 text-black mt-5 justify-center text-left">
                         Department of Environment and Natural Resources <br />
