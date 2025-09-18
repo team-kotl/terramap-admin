@@ -18,7 +18,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/users" element={<Users />} />
-                        <Route path="/atlas-activity" element={<SiteAct />} />
+                        <Route path="/site-activity" element={<SiteAct />} />
                         <Route path="/dashboard-activity" element={<DashboardAct />} />
                         <Route path="/download" element={<Download />} />
                         <Route path="/survey" element={<Survey />} />
