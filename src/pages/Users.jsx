@@ -38,7 +38,7 @@ const Users = () => {
             province: "Ifugao",
             municipality: "Lagawe",
             remarks: "",
-        },
+        }, 
         {
             staffId: "ST004",
             username: "bryce",
@@ -91,25 +91,19 @@ const Users = () => {
 
     return (
         <div className="relative bg-gray-100 min-screen">
-            <div className="md:p-5 mt-15 md:mt-0">
+            <div className="p-1 md:p-5 md:mt-0">
                 <div className="flex flex-row md:justify-between md:items-center bg-white shadow p-2 rounded mb-6 gap-3 mt-5 ">
                     <div className="relative flex-1">
                         <Search className="absolute left-2 md:top-2 top-1 h-5 w-5 text-gray-500" />
                         <input
                             type="text"
                             placeholder="Search Users"
-                            className="pl-10 md:pr-3 md:py-2 pr-2 py-1 rounded-md text-sm w-full focus:outline-none focus:ring-0"
+                            className="pl-10 md:pr-2 md:py-2 pr-2 py-1 rounded-md text-base w-full focus:outline-none focus:ring-0"
                         />
                     </div>
-                </div>
-
-                <div className="hidden md:block w-px h-6 bg-gray-400"></div>
-                <span className="hidden md:flex text-gray-600 font-medium text-sm md:text-base">
-                    superadmin
-                </span>
+                    </div>
             </div>
-
-            <div className="flex flex-wrap justify-between items-center mb-6 gap-3">
+            <div className="flex flex-row justify-between items-center mb-6 gap-3 mr-1 ml-1 -mt-3 md:mr-5 md:ml-5 md:-mt-5">
                 <h1 className="text-2xl md:text-3xl font-bold text-green-800">Users</h1>
                 <div className="flex items-center gap-2">
                     <button
@@ -121,14 +115,13 @@ const Users = () => {
                         <CirclePlus className="h-5 w-5" />
                         Add User
                     </button>
-
                     <button className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 md:px-4 md:py-2 rounded-md cursor-pointer">
                         <ListFilter className="h-5 w-5" />
                     </button>
                 </div>
             </div>
 
-            <div className="bg-white shadow rounded overflow-x-auto">
+            <div className="bg-white shadow rounded overflow-x-auto mr-1 ml-1 md:mr-5 md:ml-5">
                 <table className="table-auto w-full border-collapse min-w-[600px]">
                     <thead>
                         <tr className="bg-green-800 text-white text-left text-sm md:text-base">
@@ -144,11 +137,11 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user) => (
+                        {users.map((user, index) => (
                             <tr
                                 key={user.staffId}
-                                className="border-b border-gray-200 hover:bg-gray-100 text-sm md:text-base"
-                            >
+                                className={`border-b border-gray-200 text-sm md:text-base ${index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                                        } hover:bg-gray-100`}>
                                 <td className="pl-4 md:pl-12 py-2 md:py-3">{user.staffId}</td>
                                 <td className="px-2 md:px-4 py-2 md:py-3">{user.username}</td>
                                 <td className="px-2 py-2 md:py-3">
@@ -202,10 +195,10 @@ const Users = () => {
                                         onClick={() => setIsEditModalOpen(true)}
                                         className="text-gray-500 hover:text-blue-500"
                                     >
-                                        <Pencil className="h-5 w-5" />
+                                        <Pencil className="h-5 w-5 cursor-pointer" />
                                     </button>
                                     <button className="text-red-400 hover:text-red-500 ml-3">
-                                        <Archive className="h-5 w-5" />
+                                        <Archive className="h-5 w-5 cursor-pointer" />
                                     </button>
                                 </td>
                             </tr>
