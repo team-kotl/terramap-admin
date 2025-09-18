@@ -21,7 +21,7 @@ function App() {
                         <Route path="/dashboard-activity" element={<DashboardAct />} />
                         <Route path="/download" element={<Download />} />
                         <Route path="/survey" element={<Survey />} />
-                    </Routes>   
+                    </Routes>
                 </main>
             </div>
         </Router>

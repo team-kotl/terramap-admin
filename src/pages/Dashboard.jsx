@@ -45,11 +45,12 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-100 p-6">
-            {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-                <h1 className="text-green-700 font-bold text-2xl">Dashboard</h1>
-                <p className="text-green-700 font-bold text-2xl">
+        <div className="min-screen bg-gray-100 px-2 md:px-6 py-15">
+            <div className="flex justify-between items-center md:mb-6 mb-4 mt-3">
+                <h1 className="text-green-800 font-bold text-2xl md:text-3xl">
+                    Dashboard
+                </h1>
+                <p className="text-green-800 font-bold md:text-3xl text-lg">
                     {new Date().toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -58,42 +59,39 @@ const Dashboard = () => {
                 </p>
             </div>
 
-            {/* Top Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-4">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <Users className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Users</span>
+                        <p className="font-medium text-center">Users</p>
                     </div>
                     <span className="text-2xl font-bold">12</span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <Map className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Atlas Activity</span>
+                        <p className="font-medium text-center">Atlas Activity</p>
                     </div>
                     <span className="text-2xl font-bold">10</span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <BarChart3 className="w-8 h-8 text-green-700" />
-                        <span className="font-medium">Dashboard Activity</span>
+                        <p className="font-medium text-center">Dashboard Activity</p>
                     </div>
                     <span className="text-2xl font-bold">11</span>
                 </div>
             </div>
 
-            {/* Grid layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Left column: Source of Traffic */}
-                <div className="bg-white shadow rounded-lg p-6 flex flex-col h-full">
+                <div className="bg-white shadow rounded-lg px-3 md:px-6 py-4 flex flex-col h-full">
                     <h2 className="text-green-700 font-semibold mb-4">
                         Source of Traffic (By count)
                     </h2>
 
-                    {/* Table section */}
                     <div className="flex-grow">
                         <div className="w-full border border-gray-200 rounded-lg overflow-hidden">
                             <table className="w-full text-left">
@@ -103,29 +101,30 @@ const Dashboard = () => {
                                             key={idx}
                                             className="even:bg-gray-50 hover:bg-gray-100 transition"
                                         >
-                                            <td className="px-4 py-2">{item.place}</td>
-                                            <td className="px-4 py-2 text-right">{item.count}</td>
+                                            <td className="px-2 md:px-4 py-2">{item.place}</td>
+                                            <td className="px-2 md:px-4 py-2 text-right">
+                                                {item.count}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
 
-                    {/* Total Places with highlighted card style */}
-                    <div className="mt-4 bg-green-50 border border-green-200 rounded-md px-4 py-3 flex justify-between items-center font-semibold text-green-800">
+                    <div className="mt-4 bg-green-50 border border-green-200 rounded-md px-2 md:px-4 py-3 flex justify-between items-center font-semibold text-green-800">
                         <span>Total Places</span>
                         <span>5</span>
                     </div>
                 </div>
 
-
                 {/* Right column: stacked charts */}
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4">
                     {/* Monthly Visits */}
-                    <div className="bg-white shadow rounded-lg p-6">
-                        <h2 className="text-green-700 font-semibold mb-4">Monthly visits</h2>
+                    <div className="bg-white shadow rounded-lg px-2 md:px-6 py-4">
+                        <h2 className="text-green-700 font-semibold mb-4">
+                            Monthly visits
+                        </h2>
                         <ResponsiveContainer width="100%" height={200}>
                             <LineChart data={monthlyVisits}>
                                 <CartesianGrid strokeDasharray="3 3" />
@@ -138,7 +137,7 @@ const Dashboard = () => {
                     </div>
 
                     {/* Status Codes */}
-                    <div className="bg-white shadow rounded-lg p-6">
+                    <div className="bg-white shadow rounded-lg px-2 md:px-6 py-4">
                         <h2 className="text-green-700 font-semibold mb-4">
                             Most Frequent Status Codes
                         </h2>
@@ -154,7 +153,7 @@ const Dashboard = () => {
                                         <Cell
                                             key={`cell-${index}`}
                                             fill={
-                                                ["#16a34a", "#dc2626", "#facc15", "#2563eb"][index % 4] // pick colors
+                                                ["#16a34a", "#dc2626", "#facc15", "#2563eb"][index % 4]
                                             }
                                         />
                                     ))}
