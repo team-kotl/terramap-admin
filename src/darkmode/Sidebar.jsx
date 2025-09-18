@@ -107,7 +107,7 @@ const Sidebar = () => {
             </li>
             <li>
                 <NavLink
-                    to="/atlas-activity"
+                    to="/site-activity"
                     className={({ isActive }) =>
                         isActive
                             ? "flex items-center gap-5 font-bold"
@@ -129,7 +129,7 @@ const Sidebar = () => {
                                         ? "text-[var(--sidebar-active-text)] font-bold"
                                         : "text-[var(--color-secondary)] group-hover:text-[var(--sidebar-hover-text)] group-hover:font-semibold"
                                 }>
-                                Atlas Activity
+                               Site Activity
                             </span>
                         </>
                     )}

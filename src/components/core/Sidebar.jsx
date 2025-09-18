@@ -77,7 +77,7 @@ const Sidebar = () => {
 
             <li>
                 <NavLink
-                    to="/atlas-activity"
+                    to="/site-activity"
                     className={({ isActive }) =>
                         isActive
                             ? "flex items-center gap-5 text-green-800 font-bold"
@@ -95,7 +95,7 @@ const Sidebar = () => {
                                         : "text-gray-600"
                                 }
                             />
-                            Atlas Activity
+                            Site Activity
                         </>
                     )}
                 </NavLink>
@@ -173,7 +173,7 @@ const Sidebar = () => {
                                         : "text-gray-600"
                                 }
                             />
-                            CSS
+                            CS Survey
                         </>
                     )}
                 </NavLink>
