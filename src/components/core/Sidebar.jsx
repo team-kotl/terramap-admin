@@ -12,6 +12,7 @@ import {
     Moon,
     Menu,
     X,
+    FileQuestion,
 } from "lucide-react";
 import ProfileModal from "../ProfileModal";
 
@@ -173,6 +174,32 @@ const Sidebar = () => {
                                 }
                             />
                             CSS
+                        </>
+                    )}
+                </NavLink>
+            </li>
+
+            <li>
+                <NavLink
+                    to="/surveyform"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "flex items-center gap-5 text-green-800 font-bold"
+                            : "flex items-center gap-5 hover:text-gray-800"
+                    }
+                    onClick={() => setIsOpen(false)}
+                >
+                    {({ isActive }) => (
+                        <>
+                            <FileQuestion
+                                size={20}
+                                className={
+                                    isActive
+                                        ? "text-green-800"
+                                        : "text-gray-600"
+                                }
+                            />
+                            Survey Form
                         </>
                     )}
                 </NavLink>

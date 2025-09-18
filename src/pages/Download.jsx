@@ -87,7 +87,7 @@ const Download = () => {
 
     return (
         <div className="relative bg-gray-100 min-screen">
-            <div className="p-1 md:p-5 mt-15 md:mt-0">
+            <div className="p-1 md:p-5 md:mt-0">
                 {/* Title + Search Bar in the same row */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
                     <h1 className="text-2xl md:text-3xl font-bold text-green-800">
@@ -96,13 +96,14 @@ const Download = () => {
 
                     {/* Search Bar */}
                     <div className="relative w-full md:w-80">
-                        <Search className="absolute left-2 top-2 h-5 w-5 text-gray-500" />
+                        <Search className="absolute left-2 top-2.5 h-5 w-5 text-gray-500" />
                         <input
                             type="text"
                             placeholder="Search Downloads"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="pl-10 pr-2 py-2 rounded-md text-base w-full border border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent"
+                            className="pl-10 pr-2 py-2 rounded-md text-base w-full border border-gray-400 
+                                        focus:outline-none focus:ring-1 focus:ring-green-800"
                         />
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import DashboardAct from "./pages/DashboardAct"
 import Survey from "./pages/Survey"
 import Download from "./pages/Download"
 import Login from "./pages/Login"
+import SurveyForm from "./components/SurveyForm"
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/dashboard-activity" element={<DashboardAct />} />
                         <Route path="/download" element={<Download />} />
                         <Route path="/survey" element={<Survey />} />
+                        <Route path="/surveyform" element={<SurveyForm />} />
                     </Routes>
                 </main>
             </div>
