@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
 import { Users, Map, BarChart3 } from "lucide-react";
 import {
     LineChart,
