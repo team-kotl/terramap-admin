@@ -45,120 +45,125 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className="min-screen bg-gray-100 md:px-6">
-            <div className="flex justify-between items-center md:mb-6 mb-4 mt-3">
-                <h1 className="text-green-800 font-bold text-2xl md:text-3xl">Dashboard</h1>
-                <p className="text-green-800 font-bold md:text-3xl text-lg">
-                    {new Date().toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                    })}
-                </p>
-            </div>
+  <div className="min-screen bg-surface md:px-6">
+    <div className="flex justify-between items-center md:mb-6 mb-4 mt-3">
+      <h1 className="text-primary font-bold text-2xl md:text-3xl">Dashboard</h1>
+      <p className="text-primary font-bold md:text-3xl text-lg">
+        {new Date().toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })}
+      </p>
+    </div>
 
-            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
-                    <div className="flex items-center gap-3 md:flex-row flex-col">
-                        <Users className="w-8 h-8 text-green-700" />
-                        <p className="font-medium text-center">Users</p>
-                    </div>
-                    <span className="text-2xl font-bold">12</span>
-                </div>
-
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
-                    <div className="flex items-center gap-3 md:flex-row flex-col">
-                        <Map className="w-8 h-8 text-green-700" />
-                        <p className="font-medium text-center">Atlas Activity</p>
-                    </div>
-                    <span className="text-2xl font-bold">10</span>
-                </div>
-
-                <div className="bg-white shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
-                    <div className="flex items-center gap-3 md:flex-row flex-col">
-                        <BarChart3 className="w-8 h-8 text-green-700" />
-                        <p className="font-medium text-center">Dashboard Activity</p>
-                    </div>
-                    <p className="text-2xl font-bold">11</p>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {/* Left column: Source of Traffic */}
-                <div className="bg-white shadow rounded-lg px-3 md:px-6 py-4 flex flex-col h-full">
-                    <h2 className="text-green-700 font-semibold mb-4">
-                        Source of Traffic (By count)
-                    </h2>
-                    {/* Table section */}
-                    <div className="flex-grow">
-                        <div className="w-full border border-gray-200 rounded-lg overflow-hidden">
-                            <table className="w-full text-left">
-                                <tbody>
-                                    {traffic.map((item, idx) => (
-                                        <tr
-                                            key={idx}
-                                            className="even:bg-gray-50 hover:bg-gray-100 transition"
-                                        >
-                                            <td className="px-2 md:px-4 py-2">{item.place}</td>
-                                            <td className="px-2 md:px-4 py-2 text-right">{item.count}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div className="mt-4 bg-green-50 border border-green-200 rounded-md px-2 md:px-4 py-3 flex justify-between items-center font-semibold text-green-800">
-                        <span>Total Places</span>
-                        <span>17</span>
-                    </div>
-                </div>
-
-                {/* Right column: stacked charts */}
-                <div className="flex flex-col gap-4">
-                    {/* Monthly Visits */}
-                    <div className="bg-white shadow rounded-lg px-2 md:px-6 py-4">
-                        <h2 className="text-green-700 font-semibold mb-4">Monthly visits</h2>
-                        <ResponsiveContainer width="100%" height={200}>
-                            <LineChart data={monthlyVisits}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Line type="monotone" dataKey="visits" stroke="green" dot />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
-
-                    {/* Status Codes */}
-                    <div className="bg-white shadow rounded-lg px-2 md:px-6 py-4">
-                        <h2 className="text-green-700 font-semibold mb-4">
-                            Most Frequent Status Codes
-                        </h2>
-                        <ResponsiveContainer width="100%" height={200}>
-                            <BarChart data={statusCodes} layout="vertical">
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis type="number" />
-                                <YAxis dataKey="name" type="category" />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="count">
-                                    {statusCodes.map((entry, index) => (
-                                        <Cell
-                                            key={`cell-${index}`}
-                                            fill={
-                                                ["#16a34a", "#dc2626", "#facc15", "#2563eb"][index % 4]
-                                            }
-                                        />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </div>
-            </div>
+    <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-4">
+      <div className="bg-card shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+        <div className="flex items-center gap-3 md:flex-row flex-col">
+          <Users className="w-8 h-8 text-primary" />
+          <p className="font-medium text-center text-theme">Users</p>
         </div>
-    );
+        <span className="text-2xl font-bold text-theme">12</span>
+      </div>
+
+      <div className="bg-card shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+        <div className="flex items-center gap-3 md:flex-row flex-col">
+          <Map className="w-8 h-8 text-primary" />
+          <p className="font-medium text-center text-theme">Atlas Activity</p>
+        </div>
+        <span className="text-2xl font-bold text-theme">10</span>
+      </div>
+
+      <div className="bg-card shadow rounded-xl px-3 md:px-6 py-6 flex items-center justify-between md:flex-row flex-col">
+        <div className="flex items-center gap-3 md:flex-row flex-col">
+          <BarChart3 className="w-8 h-8 text-primary" />
+          <p className="font-medium text-center text-theme">Dashboard Activity</p>
+        </div>
+        <p className="text-2xl font-bold text-theme">11</p>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* Left column: Source of Traffic */}
+      <div className="bg-card shadow rounded-lg px-3 md:px-6 py-4 flex flex-col h-full">
+        <h2 className="text-primary font-semibold mb-4">
+          Source of Traffic (By count)
+        </h2>
+        {/* Table section */}
+        <div className="flex-grow">
+          <div className="w-full border border-theme rounded-lg overflow-hidden">
+            <table className="w-full text-left text-theme">
+              <tbody>
+                {traffic.map((item, idx) => (
+                  <tr
+                    key={idx}
+                    className="even:bg-surface hover:bg-surface/80 transition"
+                  >
+                    <td className="px-2 md:px-4 py-2">{item.place}</td>
+                    <td className="px-2 md:px-4 py-2 text-right">{item.count}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-surface border border-theme rounded-md px-2 md:px-4 py-3 flex justify-between items-center font-semibold text-primary">
+          <span>Total Places</span>
+          <span>17</span>
+        </div>
+      </div>
+
+      {/* Right column: stacked charts */}
+      <div className="flex flex-col gap-4">
+        {/* Monthly Visits */}
+        <div className="bg-card shadow rounded-lg px-2 md:px-6 py-4">
+          <h2 className="text-primary font-semibold mb-4">Monthly visits</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={monthlyVisits}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="var(--color-text)" />
+              <YAxis stroke="var(--color-text)" />
+              <Tooltip />
+              <Line type="monotone" dataKey="visits" stroke="var(--color-primary)" dot />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Status Codes */}
+        <div className="bg-card shadow rounded-lg px-2 md:px-6 py-4">
+          <h2 className="text-primary font-semibold mb-4">
+            Most Frequent Status Codes
+          </h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={statusCodes} layout="vertical">
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis type="number" stroke="var(--color-text)" />
+  <YAxis dataKey="name" type="category" stroke="var(--color-text)" />
+  <Tooltip />
+  <Legend />
+  <Bar dataKey="count">
+    {statusCodes.map((entry, index) => (
+      <Cell
+        key={`cell-${index}`}
+        fill={
+          [
+            "var(--chart-success)",
+            "var(--chart-error)",
+            "var(--chart-warning)",
+            "var(--chart-info)",
+          ][index % 4]
+        }
+      />
+    ))}
+  </Bar>
+</BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 };
 
 export default Dashboard;
