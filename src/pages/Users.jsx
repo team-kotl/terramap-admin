@@ -16,6 +16,7 @@ const Users = () => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isArchiveOpen, setIsArchiveOpen] = useState(false);
 
     //    useEffect(() => {
     //     axios.get("URL NG DATABASE")
@@ -232,7 +233,10 @@ const Users = () => {
                                     >
                                         <Pencil className="h-5 w-5 cursor-pointer" />
                                     </button>
-                                    <button className="text-red-400 hover:text-red-500 ml-3">
+                                    <button
+                                        onClick={() => setIsArchiveOpen(true)}
+                                        className="text-red-400 hover:text-red-500 ml-3"
+                                    >
                                         <Archive className="h-5 w-5 cursor-pointer" />
                                     </button>
                                 </td>
@@ -469,7 +473,7 @@ const Users = () => {
             )}
 
             {isEditModalOpen && (
-                             <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
                     <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl relative transform transition-all duration-300 ease-out overflow-hidden">
                         <div className="bg-green-800 px-6 py-4">
                             <div className="flex justify-between items-center">
@@ -619,6 +623,50 @@ const Users = () => {
                                     Edit User
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {isArchiveOpen && (
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-out overflow-hidden">
+                        <div className="bg-green-800 px-6 py-4">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-xl font-bold text-white">
+                                    Confirm Archive
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div className="px-6 py-6">
+                            <p className="text-gray-700 text-center">
+                                Are you sure you want to{" "}
+                                <span className="font-semibold text-green-600">
+                                    archive this user
+                                </span>
+                                ? <br />
+                                This action can be reversed later.
+                            </p>
+                        </div>
+
+                        <div className="flex justify-center gap-3 px-6 py-4 border-t border-gray-200">
+                            <button
+                                type="button"
+                                onClick={() => setIsArchiveOpen(false)}
+                                className="px-6 py-2.5 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 font-medium 
+                                transition-all duration-200 transform hover:scale-[1.02]"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setIsArchiveOpen(false)}
+                                className="px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium 
+                                transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                            >
+                                Archive
+                            </button>
                         </div>
                     </div>
                 </div>
