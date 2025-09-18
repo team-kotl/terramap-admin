@@ -89,11 +89,11 @@ const Dashboard = () => {
     */
 
     return (
-        <div className="min-screen bg-gray-100 px-2 md:px-6 mt-5">
+        <div className="min-screen bg-gray-100 px-2 md:px-6 md:mt-5 mt-0">
             {/* Header */}
             <div className="flex justify-between items-center md:mb-6 mb-4">
                 <h1 className="text-green-700 font-bold text-2xl">Dashboard</h1>
-                <p className="text-green-700 font-bold text-2xl">
+                <p className="text-green-700 font-bold md:text-2xl text-lg">
                     {new Date().toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -103,40 +103,40 @@ const Dashboard = () => {
             </div>
 
             {/* Top Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+            <div className="grid grid-cols-3 md:gap-6 gap-3 md:mb-6 mb-3">
+                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col">
                         <Users className="w-8 h-8 text-green-700" />
                         <span className="font-medium">Users</span>
                     </div>
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-bold text-center">
                         {usersCount > 0 ? usersCount : "No data"}
                     </span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col text-center">
                         <Map className="w-8 h-8 text-green-700" />
                         <span className="font-medium">Atlas Activity</span>
                     </div>
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-bold text-center">
                         {atlasActivity > 0 ? atlasActivity : "No data"}
                     </span>
                 </div>
 
-                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white shadow rounded-xl p-6 flex items-center justify-between md:flex-row flex-col">
+                    <div className="flex items-center gap-3 md:flex-row flex-col text-center">
                         <BarChart3 className="w-8 h-8 text-green-700" />
                         <span className="font-medium">Dashboard Activity</span>
                     </div>
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-bold text-center">
                         {dashboardActivity > 0 ? dashboardActivity : "No data"}
                     </span>
                 </div>
             </div>
 
             {/* Grid layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-6 gap-3">
                 {/* Left column: Source of Traffic */}
                 <div className="bg-white shadow rounded-lg p-6 flex flex-col h-full">
                     <h2 className="text-green-700 font-semibold mb-4">
@@ -178,7 +178,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Right column: stacked charts */}
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col md:gap-6 gap-3">
                     {/* Monthly Visits */}
                     <div className="bg-white shadow rounded-lg p-6">
                         <h2 className="text-green-700 font-semibold mb-4">

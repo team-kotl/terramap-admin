@@ -41,7 +41,6 @@ const Download = () => {
                         address: "Baguio City",
                         affiliation: "UP Baguio",
                         purpose: "Research on land use",
-                        contactNo: "09171234567",
                         timestamp: "2025-09-13T08:15:00",
                     },
                     {
@@ -52,7 +51,6 @@ const Download = () => {
                         address: "La Trinidad",
                         affiliation: "BSU",
                         purpose: "Academic Project",
-                        contactNo: "09181234567",
                         timestamp: "2025-09-13T09:30:00",
                     },
                     {
@@ -63,7 +61,6 @@ const Download = () => {
                         address: "Bangued",
                         affiliation: "LGU Abra",
                         purpose: "Planning",
-                        contactNo: "09191234567",
                         timestamp: "2025-09-13T10:45:00",
                     },
                 ];
@@ -135,9 +132,6 @@ const Download = () => {
                                 <th className="px-4 py-3 min-w-[220px]">
                                     Purpose
                                 </th>
-                                <th className="px-4 py-3 min-w-[150px]">
-                                    Contact No
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -165,9 +159,6 @@ const Download = () => {
                                     </td>
                                     <td className="px-4 py-3">
                                         {item.purpose}
-                                    </td>
-                                    <td className="px-4 py-3">
-                                        {item.contactNo}
                                     </td>
                                 </tr>
                             ))}
