@@ -104,7 +104,7 @@ const Users = () => {
     ];
 
     return (
-        <div className="relative bg-gray-100 min-screen">
+        <div className="relative bg-gray-100 w-full p-10">
             <div className="p-1 md:p-5 md:mt-0">
                 <div className="flex flex-row md:justify-between md:items-center bg-white rounded mb-6 gap-3 mt-5 ">
                     <div className="relative flex-1">

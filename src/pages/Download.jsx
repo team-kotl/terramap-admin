@@ -83,7 +83,7 @@ const Download = () => {
     );
 
     return (
-        <div className="relative bg-gray-100 min-screen">
+        <div className="relative bg-gray-100 w-full p-10">
             <div className="p-1 md:p-5 md:mt-0">
                 {/* Title + Search Bar in the same row */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">

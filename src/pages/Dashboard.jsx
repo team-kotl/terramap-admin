@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { Users, Map, BarChart3 } from "lucide-react";
 import {
     LineChart,
@@ -89,10 +89,12 @@ const Dashboard = () => {
     */
 
     return (
-        <div className="min-screen bg-gray-100 px-2 md:px-6 md:mt-5 mt-0">
+        <div className="bg-gray-100 p-10 md:p-15 mt-0 w-full overflow-y-scroll">
             {/* Header */}
             <div className="flex justify-between items-center md:mb-6 mb-4">
-                <h1 className="text-green-700 font-bold text-2xl">Dashboard</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-green-800">
+                    Dashboard
+                </h1>
                 <p className="text-green-700 font-bold md:text-2xl text-lg">
                     {new Date().toLocaleDateString("en-US", {
                         month: "short",
@@ -223,12 +225,14 @@ const Dashboard = () => {
                                         {statusCodes.map((entry, index) => (
                                             <Cell
                                                 key={`cell-${index}`}
-                                                fill={[
-                                                    "#16a34a",
-                                                    "#dc2626",
-                                                    "#facc15",
-                                                    "#2563eb",
-                                                ][index % 4]}
+                                                fill={
+                                                    [
+                                                        "#16a34a",
+                                                        "#dc2626",
+                                                        "#facc15",
+                                                        "#2563eb",
+                                                    ][index % 4]
+                                                }
                                             />
                                         ))}
                                     </Bar>
