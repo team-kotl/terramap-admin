@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const SurveyForm = () => {
     const [step, setStep] = useState(1); // steps: 1 = consent, 2 = intro, 3 = survey
@@ -20,24 +21,60 @@ const SurveyForm = () => {
     });
 
     const surveyQuestions = [
-        "I spent a reasonable amount of time for my transaction. (Responsiveness)",
-        "The office followed the transaction’s requirements and steps. (Reliability)",
-        "The steps (including payment) I needed to do were easy and simple. (Access & Facilities)",
-        "I easily found the information I needed from the office/website. (Communication)",
-        "I paid a reasonable amount of fees. (Cost)",
-        "I feel the office was fair to everyone. (Integrity)",
-        "I was treated courteously and helped by the staff. (Assurance)",
-        "I got what I needed or denial was explained. (Outcome)",
-        "I am satisfied with the service I availed.",
+        {
+            title: "Responsiveness",
+            en: "I spent a reasonable amount of time for my transaction.",
+            tl: "(Makatwiran ang oras na aking ginugol para sa pagproseso ng aking transaksyon.)",
+        },
+        {
+            title: "Reliability",
+            en: "The office followed the transaction’s requirements and steps.",
+            tl: "(Sinunod ng opisina ang mga kinakailangan at hakbang ng transaksyon.)",
+        },
+        {
+            title: "Access & Facilities",
+            en: "The steps (including payment) I needed to do were easy and simple.",
+            tl: "(Ang mga hakbang (kasama ang pagbabayad) na kailangan kong gawin ay madali at simple.)",
+        },
+        {
+            title: "Communication",
+            en: "I easily found the information I needed from the office/website.",
+            tl: "(Madali kong nahanap ang impormasyong kailangan ko mula sa opisina/website.)",
+        },
+        {
+            title: "Cost",
+            en: "I paid a reasonable amount of fees.",
+            tl: "(Nakapagbayad ako ng makatwirang halaga ng bayarin.)",
+        },
+        {
+            title: "Integrity",
+            en: "I feel the office was fair to everyone.",
+            tl: "(Nararamdaman ko na ang opisina ay patas sa lahat.)",
+        },
+        {
+            title: "Assurance",
+            en: "I was treated courteously and helped by the staff.",
+            tl: "(Ako ay magalang na tinrato at tinulungan ng mga kawani.)",
+        },
+        {
+            title: "Outcome",
+            en: "I got what I needed or denial was explained.",
+            tl: "(Nakuha ko ang aking kailangan o ipinaliwanag ang dahilan ng pagtanggi.)",
+        },
+        {
+            title: "Overall Satisfaction",
+            en: "I am satisfied with the service I availed.",
+            tl: "(Ako ay nasiyahan sa serbisyong aking nakuha.)",
+        },
     ];
 
     const options = [
-        "Strongly Disagree",
-        "Disagree",
-        "Neutral",
-        "Agree",
-        "Strongly Agree",
-        "N/A",
+        { en: "Strongly Disagree", tl: "Lubos na Hindi Sumasang-ayon" },
+        { en: "Disagree", tl: "Hindi Sumasang-ayon" },
+        { en: "Neutral", tl: "Neutral / Wala sa Panig" },
+        { en: "Agree", tl: "Sumasang-ayon" },
+        { en: "Strongly Agree", tl: "Lubos na Sumasang-ayon" },
+        { en: "N/A", tl: "Hindi Aplikable" },
     ];
 
     const handleNext = () => {
@@ -181,139 +218,189 @@ const SurveyForm = () => {
                     </h1>
 
                     {/* Basic Information */}
-                    <div className="space-y-4">
-                        {/* Service Availed - full row */}
-                        <div>
-                            <label className="block font-medium">
-                                Service Availed{" "}
-                                <span className="italic text-gray-600">
-                                    (Serbisyong Nakuha)
-                                </span>
-                            </label>
+                    <div className="space-y-6">
+                        {/* Service Availed */}
+                        <div className="relative">
                             <input
                                 type="text"
                                 name="serviceAvailed"
                                 value={formData.serviceAvailed}
                                 onChange={handleChange}
-                                className="w-full border p-2 rounded"
-                                placeholder="Service Availed"
+                                id="serviceAvailed"
+                                placeholder=" "
+                                className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-green-600 focus:ring-0 peer"
                                 required
                             />
+                            <label
+                                htmlFor="serviceAvailed"
+                                className="absolute left-3 -top-2.5 bg-white px-1 text-black text-sm transition-all
+                 peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                 peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                            >
+                                Service Availed{" "}
+                                <span className="italic">
+                                    (Serbisyong Nakuha)
+                                </span>
+                            </label>
                         </div>
 
-                        {/* Date of Application + Date of Release in same row */}
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block font-medium">
-                                    Date of Application{" "}
-                                    <span className="italic text-gray-600">
-                                        (Petsa ng Pag-apply)
-                                    </span>
-                                </label>
+                        {/* Date of Application + Date of Release */}
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="relative">
                                 <input
                                     type="date"
                                     name="dateApplication"
                                     value={formData.dateApplication}
                                     onChange={handleChange}
-                                    className="w-full border p-2 rounded"
+                                    id="dateApplication"
+                                    placeholder=" "
+                                    className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-gray-600 focus:ring-0 peer"
                                     required
                                 />
-                            </div>
-                            <div>
-                                <label className="block font-medium">
-                                    Date of Release{" "}
-                                    <span className="italic text-gray-600">
-                                        (Petsa ng Paglabas)
+                                <label
+                                    htmlFor="dateApplication"
+                                    className="absolute left-3 -top-2.5 bg-white px-1 text-black text-sm transition-all
+                   peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                   peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                                >
+                                    Date of Application{" "}
+                                    <span className="italic">
+                                        (Petsa ng Aplikasyon)
                                     </span>
                                 </label>
+                            </div>
+
+                            <div className="relative">
                                 <input
                                     type="date"
                                     name="dateRelease"
                                     value={formData.dateRelease}
                                     onChange={handleChange}
-                                    className="w-full border p-2 rounded"
+                                    id="dateRelease"
+                                    placeholder=" "
+                                    className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-green-600 focus:ring-0 peer"
                                     required
                                 />
+                                <label
+                                    htmlFor="dateRelease"
+                                    className="absolute left-3 -top-2.5 bg-white px-1 text-gray-600 text-sm transition-all
+                   peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                   peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                                >
+                                    Date of Release{" "}
+                                    <span className="italic">
+                                        (Petsa ng Paglabas)
+                                    </span>
+                                </label>
                             </div>
                         </div>
 
-                        {/* Name - full row */}
-                        <div>
-                            <label className="block font-medium">
-                                Name{" "}
-                                <span className="italic text-gray-600">
-                                    (Pangalan)
-                                </span>
-                            </label>
+                        {/* Name */}
+                        <div className="relative">
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full border p-2 rounded"
-                                placeholder="Name"
+                                id="name"
+                                placeholder=" "
+                                className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-green-600 focus:ring-0 peer"
                                 required
                             />
+                            <label
+                                htmlFor="name"
+                                className="absolute left-3 -top-2.5 bg-white px-1 text-gray-600 text-sm transition-all
+                 peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                 peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                            >
+                                Name <span className="italic">(Pangalan)</span>
+                            </label>
                         </div>
 
-                        {/* Sex + Email Address */}
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block font-medium">
-                                    Sex{" "}
-                                    <span className="italic text-gray-600">
-                                        (Kasarian)
-                                    </span>
-                                </label>
+                        {/* Sex + Email */}
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="relative">
                                 <select
                                     name="sex"
                                     value={formData.sex}
                                     onChange={handleChange}
-                                    className="w-full border p-2 rounded"
+                                    id="sex"
+                                    className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-black focus:ring-0 peer appearance-none"
                                     required
                                 >
-                                    <option value="">Select</option>
+                                    <option
+                                        value=""
+                                        disabled
+                                        className="text-gray-400"
+                                    >
+                                        Select Sex / Piliin ang Kasarian
+                                    </option>
                                     <option value="Male">Male (Lalaki)</option>
                                     <option value="Female">
                                         Female (Babae)
                                     </option>
                                 </select>
-                            </div>
-                            <div>
-                                <label className="block font-medium">
-                                    Email Address{" "}
-                                    <span className="italic text-gray-600">
-                                        (Email Address)
-                                    </span>
+
+                                {/* Floating label */}
+                                <label
+                                    htmlFor="sex"
+                                    className="absolute left-3 -top-2.5 bg-white px-1 text-black text-sm transition-all
+           peer-placeholder-shown:top-3 peer-placeholder-shown:text-black peer-placeholder-shown:text-base
+           peer-focus:-top-2.5 peer-focus:text-black peer-focus:text-sm"
+                                >
+                                    Sex{" "}
+                                    <span className="italic">(Kasarian)</span>
                                 </label>
+
+                                {/* Lucide ChevronDown icon */}
+                                <ChevronDown
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                                    size={20}
+                                />
+                            </div>
+
+                            <div className="relative">
                                 <input
                                     type="email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full border p-2 rounded"
-                                    placeholder="Email Address"
+                                    id="email"
+                                    placeholder=" "
+                                    className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-green-600 focus:ring-0 peer"
                                     required
                                 />
+                                <label
+                                    htmlFor="email"
+                                    className="absolute left-3 -top-2.5 bg-white px-1 text-gray-600 text-sm transition-all
+                   peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                   peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                                >
+                                    Email Address{" "}
+                                    <span className="italic">
+                                        (Email Address)
+                                    </span>
+                                </label>
                             </div>
                         </div>
 
-                        {/* Type of Client - full row */}
-                        <div>
-                            <label className="block font-medium">
-                                Type of Client{" "}
-                                <span className="italic text-gray-600">
-                                    (Uri ng Kliyente)
-                                </span>
-                            </label>
+                        {/* Type of Client */}
+                        <div className="relative">
                             <select
                                 name="typeClient"
                                 value={formData.typeClient}
                                 onChange={handleChange}
-                                className="w-full border p-2 rounded"
+                                id="typeClient"
+                                className="w-full border-2 border-gray-300 rounded-md px-3 pt-5 pb-2 text-sm focus:border-black focus:ring-0 peer appearance-none"
                                 required
                             >
-                                <option value="">Select</option>
+                                <option
+                                    value=""
+                                    disabled
+                                    className="text-gray-400"
+                                >
+                                    Select Type / Piliin ang Uri ng Kliyente
+                                </option>
                                 <option value="Citizen">
                                     Citizen / Individual (Mamamayan)
                                 </option>
@@ -327,6 +414,25 @@ const SurveyForm = () => {
                                     Government (Pamahalaan)
                                 </option>
                             </select>
+
+                            {/* Floating label */}
+                            <label
+                                htmlFor="typeClient"
+                                className="absolute left-3 -top-2.5 bg-white px-1 text-black text-sm transition-all
+           peer-placeholder-shown:top-3 peer-placeholder-shown:text-black peer-placeholder-shown:text-base
+           peer-focus:-top-2.5 peer-focus:text-black peer-focus:text-sm"
+                            >
+                                Type of Client{" "}
+                                <span className="italic">
+                                    (Uri ng Kliyente)
+                                </span>
+                            </label>
+
+                            {/* Lucide ChevronDown icon */}
+                            <ChevronDown
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                                size={20}
+                            />
                         </div>
                     </div>
 
@@ -338,41 +444,78 @@ const SurveyForm = () => {
                                 (Mga Tanong sa Survey)
                             </span>
                         </h2>
-                        {surveyQuestions.map((q, idx) => (
-                            <div
-                                key={idx}
-                                className="grid grid-cols-1 md:grid-cols-2 items-center border-b pb-4 gap-4"
-                            >
-                                {/* Question - Left Side */}
-                                <p className="font-medium">{q}</p>
 
-                                {/* Options - Right Side */}
-                                <div className="flex flex-wrap gap-4 md:justify-end">
-                                    {options.map((opt) => (
-                                        <label
-                                            key={opt}
-                                            className="flex items-center space-x-1"
-                                        >
-                                            <input
-                                                type="radio"
-                                                name={`q-${idx}`}
-                                                value={opt}
-                                                checked={
-                                                    formData.ratings[q] === opt
-                                                }
-                                                onChange={() =>
-                                                    handleRatingChange(q, opt)
-                                                }
-                                                required
-                                            />
-                                            <span className="text-sm">
-                                                {opt}
-                                            </span>
-                                        </label>
+                        {/* Table header */}
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full border border-gray-300">
+                                <thead className="bg-gray-100">
+                                    <tr>
+                                        <th className="px-4 py-2 text-left text-base font-semibold">
+                                            Questions
+                                        </th>
+                                        {options.map((opt) => (
+                                            <th
+                                                key={opt.en}
+                                                className="px-4 py-2 text-center"
+                                            >
+                                                <div className="text-sm font-medium">
+                                                    {opt.en}
+                                                </div>
+                                                <div className="text-xs italic text-gray-600">
+                                                    {opt.tl}
+                                                </div>
+                                            </th>
+                                        ))}
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {surveyQuestions.map((q, idx) => (
+                                        <tr key={idx} className="border-t">
+                                            {/* Question column */}
+                                            <td className="px-4 py-4">
+                                                <p className="text-lg font-bold text-green-700">
+                                                    {q.title}
+                                                </p>
+                                                <p className="text-base font-medium">
+                                                    {q.en}
+                                                </p>
+                                                <p className="text-sm italic text-gray-600">
+                                                    {q.tl}
+                                                </p>
+                                            </td>
+
+                                            {/* Options row */}
+                                            {options.map((opt) => (
+                                                <td
+                                                    key={opt.en}
+                                                    className="px-4 py-3 text-center"
+                                                >
+                                                    <input
+                                                        type="radio"
+                                                        name={`q-${idx}`}
+                                                        value={opt.en}
+                                                        checked={
+                                                            formData.ratings[
+                                                                q.en
+                                                            ] === opt.en
+                                                        }
+                                                        onChange={() =>
+                                                            handleRatingChange(
+                                                                q.en,
+                                                                opt.en
+                                                            )
+                                                        }
+                                                        className="w-5 h-5 text-green-700 focus:ring-green-600"
+                                                        required
+                                                    />
+                                                </td>
+                                            ))}
+                                        </tr>
                                     ))}
-                                </div>
-                            </div>
-                        ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     {/* Comments */}
@@ -387,7 +530,7 @@ const SurveyForm = () => {
                             name="comments"
                             value={formData.comments}
                             onChange={handleChange}
-                            className="w-full border p-2 rounded"
+                            className="w-full border p-2 rounded resize-y min-h-[80px] max-h-[200px] focus:ring-1 focus:ring-green-600"
                             rows="3"
                             placeholder="Type here / Mag-type dito"
                         ></textarea>
@@ -400,14 +543,13 @@ const SurveyForm = () => {
                             onClick={handleBack}
                             className="bg-gray-400 hover:bg-gray-500 text-white font-semibold px-6 py-2 rounded"
                         >
-                            Back <span className="italic">(Bumalik)</span>
+                            Back
                         </button>
                         <button
                             type="submit"
                             className="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800"
                         >
-                            Submit Survey{" "}
-                            <span className="italic">(Ipasa ang Survey)</span>
+                            Submit Survey
                         </button>
                     </div>
                 </form>
