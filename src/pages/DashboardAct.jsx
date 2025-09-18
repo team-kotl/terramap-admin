@@ -27,31 +27,34 @@ const DashboardActivity = () => {
     useEffect(() => {
         const mockLogs = [
             {
-                logId: 1,
-                action: "Open Site",
-                timestamp: "2023-10-05T08:02:15",
-                statusCode: 200,
-                userAgent: "Chrome",
-                region: "CAR",
-                city: "Baguio City",
-            },
-            {
-                logId: 2,
-                action: "Request Download",
-                timestamp: "2023-10-05T09:45:30",
-                statusCode: 403,
-                userAgent: "Edge",
-                region: "CAR",
-                city: "La Trinidad",
-            },
-            {
                 logId: 3,
-                action: "Open Site",
+                action: "View CSS Responses",
                 timestamp: "2023-10-05T11:30:22",
                 statusCode: 404,
                 userAgent: "Firefox",
                 region: "CAR",
                 city: "Baguio City",
+                username: "seanny",
+            },
+            {
+                logId: 2,
+                action: "Open Dashboard",
+                timestamp: "2023-10-05T09:45:30",
+                statusCode: 403,
+                userAgent: "Edge",
+                region: "CAR",
+                city: "La Trinidad",
+                username: "seanny",
+            },
+            {
+                logId: 1,
+                action: "View Activity Logs",
+                timestamp: "2023-10-05T08:02:15",
+                statusCode: 200,
+                userAgent: "Chrome",
+                region: "CAR",
+                city: "Baguio City",
+                username: "seanny",
             },
         ];
         setLogs(mockLogs);
@@ -116,7 +119,7 @@ const DashboardActivity = () => {
                                 <th className="px-4 py-3 min-w-[80px]">
                                     Log ID
                                 </th>
-                                <th className="px-4 py-3 min-w-[220px]">
+                                <th className="px-4 py-3 min-w-[120px]">
                                     Action
                                 </th>
                                 <th className="px-4 py-3 min-w-[120px]">
@@ -130,6 +133,9 @@ const DashboardActivity = () => {
                                 </th>
                                 <th className="px-4 py-3 min-w-[150px]">
                                     City
+                                </th>
+                                <th className="px-4 py-3 min-w-[150px]">
+                                    User Involved
                                 </th>
                             </tr>
                         </thead>
@@ -156,6 +162,9 @@ const DashboardActivity = () => {
                                     </td>
                                     <td className="px-4 py-3">{item.region}</td>
                                     <td className="px-4 py-3">{item.city}</td>
+                                    <td className="px-4 py-3">
+                                        {item.username}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
