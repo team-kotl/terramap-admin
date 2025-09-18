@@ -1,6 +1,6 @@
 import { CircleX, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import bcrypt from "bcryptjs"; // npm install bcryptjs
+import bcrypt from "bcryptjs";
 
 const ProfileModal = ({ onClose }) => {
     const [showChangePassword, setShowChangePassword] = useState(false);
