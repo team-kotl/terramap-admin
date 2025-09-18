@@ -147,15 +147,20 @@ const Survey = () => {
 
                         {activeTab === "rating" && (
                             <div className="w-full">
-                             {/* Rating labels header */}
-<div className="grid grid-cols-10 gap-1 w-full text-center ml-20">
-  {/* Match grid columns with radio buttons */}
-  <div className="col-span-2">Strongly Disagree</div>
-  <div className="col-span-2">Disagree</div>
-  <div className="col-span-2">Neither Agree <br /> Nor Disagree</div>
-  <div className="col-span-2">Agree</div>
-  <div className="col-span-2">Strongly Agree</div>
-</div>
+                                {/* Rating labels header */}
+                                <div className="grid grid-cols-17 gap-2 w-full text-center ">
+                                    <div className="col-span-7 pr-4"></div>
+                                    <div className="col-span-10 flex items-center">
+                                        <div className="grid grid-cols-7 gap-2 w-full text-center ml-20">
+                                            {/* Match grid columns with radio buttons */}
+                                            <div>Strongly Disagree</div>
+                                            <div>Disagree</div>
+                                            <div>Neither Agree / Disagree</div>
+                                            <div>Agree</div>
+                                            <div>Strongly Agree</div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {/* Communication */}
                                 <div className="grid grid-cols-17 gap-2 items-start border-b py-6">
                                     <div className="col-span-7 flex flex-col pr-4">
@@ -315,7 +320,7 @@ const Survey = () => {
     }
 
     return (
-        <div className="p-1 md:p-5 mt-5 md:mt-0 bg-gray-100">
+        <div className="p-10 md:p-15 bg-gray-100 w-full">
             <h1 className="text-2xl md:text-3xl font-bold text-green-800 mb-1">
                 Client Satisfaction Survey
             </h1>

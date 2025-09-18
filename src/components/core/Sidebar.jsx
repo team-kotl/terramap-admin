@@ -25,7 +25,7 @@ const Sidebar = () => {
         <ul className="space-y-8 mt-8 pl-4">
             <li>
                 <NavLink
-                    to="/"
+                    to="/dashboard"
                     className={({ isActive }) =>
                         isActive
                             ? "flex items-center gap-5 text-green-800 font-bold"
@@ -178,32 +178,6 @@ const Sidebar = () => {
                     )}
                 </NavLink>
             </li>
-
-            <li>
-                <NavLink
-                    to="/surveyform"
-                    className={({ isActive }) =>
-                        isActive
-                            ? "flex items-center gap-5 text-green-800 font-bold"
-                            : "flex items-center gap-5 hover:text-gray-800"
-                    }
-                    onClick={() => setIsOpen(false)}
-                >
-                    {({ isActive }) => (
-                        <>
-                            <FileQuestion
-                                size={20}
-                                className={
-                                    isActive
-                                        ? "text-green-800"
-                                        : "text-gray-600"
-                                }
-                            />
-                            Survey Form
-                        </>
-                    )}
-                </NavLink>
-            </li>
         </ul>
     );
 
@@ -235,7 +209,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Desktop Sidebar */}
-            <aside className="hidden md:flex w-80 h-screen bg-gray-200 text-secondary p-4 flex-col justify-between">
+            <aside className="hidden md:flex h-screen bg-gray-200 text-secondary p-4 flex-col justify-between min-w-62 w-62">
                 <div>
                     <div className="mt-3 mb-3 flex flex-row items-center justify-left gap-2">
                         <img

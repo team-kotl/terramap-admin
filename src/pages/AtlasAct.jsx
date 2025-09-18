@@ -64,7 +64,7 @@ const SiteActivity = () => {
     );
 
     return (
-        <div className="relative bg-gray-100 min-screen">
+        <div className="relative bg-gray-100 w-full p-10">
             <div className="p-1 md:p-5 md:mt-0">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
                     <h1 className="text-2xl md:text-3xl font-bold text-green-800">
