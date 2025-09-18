@@ -5,6 +5,8 @@ import {
     Archive,
     CircleX,
     ListFilter,
+    Info,
+    X,
 } from "lucide-react";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
@@ -17,6 +19,9 @@ const Users = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+    const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+    const [selectedProvinces, setSelectedProvinces] = useState([]);
+    const [showRolesLegend, setShowRolesLegend] = useState(false);
 
     //    useEffect(() => {
     //     axios.get("URL NG DATABASE")
@@ -32,7 +37,7 @@ const Users = () => {
         {
             staffId: "ST001",
             username: "janedoe",
-            roles: ["D", "U", "A"],
+            roles: ["D", "U", "DA"],
             province: "Benguet",
             municipality: "La Trinidad",
             remarks: "",
@@ -40,7 +45,7 @@ const Users = () => {
         {
             staffId: "ST002",
             username: "justincabuena",
-            roles: ["U", "A"],
+            roles: ["U", "S"],
             province: "Benguet",
             municipality: "Itogon",
             remarks: "",
@@ -56,7 +61,7 @@ const Users = () => {
         {
             staffId: "ST004",
             username: "bryce",
-            roles: ["D", "Ap"],
+            roles: ["D", "DO"],
             province: "Kalinga",
             municipality: "Tabuk",
             remarks: "",
@@ -80,7 +85,7 @@ const Users = () => {
         {
             staffId: "ST007",
             username: "petergrf",
-            roles: ["A", "C"],
+            roles: ["S", "C"],
             province: "Kalinga",
             municipality: "Tabuk",
             remarks: "",
@@ -102,6 +107,41 @@ const Users = () => {
             remarks: "",
         },
     ];
+
+    const provinces = [
+        "Abra",
+        "Apayao",
+        "Kalinga",
+        "Mt. Province",
+        "Benguet",
+        "Ifugao",
+    ];
+
+    const roleDefinitions = {
+        D: { label: "Dashboard", color: "bg-blue-100 text-blue-800" },
+        U: { label: "Users", color: "bg-green-100 text-green-800" },
+        S: { label: "Site Activity", color: "bg-yellow-100 text-yellow-800" },
+        DA: { label: "Dashboard Activity", color: "bg-red-100 text-red-800" },
+        DO: { label: "Downloads", color: "bg-purple-100 text-purple-800" },
+        C: { label: "CS Surveys", color: "bg-pink-100 text-pink-800" },
+    };
+
+    const handleProvinceFilter = (province) => {
+        setSelectedProvinces((prev) =>
+            prev.includes(province)
+                ? prev.filter((p) => p !== province)
+                : [...prev, province]
+        );
+    };
+
+    const clearFilters = () => {
+        setSelectedProvinces([]);
+    };
+
+    const filteredUsers =
+        selectedProvinces.length === 0
+            ? users
+            : users.filter((user) => selectedProvinces.includes(user.province));
 
     return (
         <div className="relative bg-gray-100 min-screen">
@@ -132,8 +172,16 @@ const Users = () => {
                         <CirclePlus className="h-5 w-5" />
                         Add User
                     </button>
-                    <button className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 md:px-4 md:py-2 rounded-md cursor-pointer">
+                    <button
+                        onClick={() => setIsFilterModalOpen(true)}
+                        className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm px-3 py-2 md:px-4 md:py-2 rounded-md cursor-pointer"
+                    >
                         <ListFilter className="h-5 w-5" />
+                        {selectedProvinces.length > 0 && (
+                            <span className="bg-white text-green-700 rounded-full px-2 py-1 text-xs font-semibold">
+                                {selectedProvinces.length}
+                            </span>
+                        )}
                     </button>
                 </div>
             </div>
@@ -164,7 +212,7 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, index) => (
+                        {filteredUsers.map((user, index) => (
                             <tr
                                 key={user.staffId}
                                 className={`border-b border-gray-200 text-sm md:text-base ${
@@ -179,7 +227,7 @@ const Users = () => {
                                 </td>
                                 <td className="px-2 py-2 md:py-3">
                                     <div className="flex flex-wrap gap-2">
-                                        {user.roles.map((role, index) => {
+                                        {user.roles.map((role, roleIndex) => {
                                             const roleMap = {
                                                 D: {
                                                     label: "D",
@@ -189,12 +237,16 @@ const Users = () => {
                                                     label: "U",
                                                     color: "bg-green-100 text-green-800",
                                                 },
-                                                A: {
-                                                    label: "A",
+                                                S: {
+                                                    label: "S",
                                                     color: "bg-yellow-100 text-yellow-800",
                                                 },
-                                                Ap: {
-                                                    label: "AP",
+                                                DA: {
+                                                    label: "DA",
+                                                    color: "bg-red-100 text-red-800",
+                                                },
+                                                DO: {
+                                                    label: "DO",
                                                     color: "bg-purple-100 text-purple-800",
                                                 },
                                                 C: {
@@ -205,7 +257,7 @@ const Users = () => {
 
                                             return (
                                                 <span
-                                                    key={index}
+                                                    key={roleIndex}
                                                     className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-semibold ${
                                                         roleMap[role]?.color ||
                                                         "bg-gray-100 text-gray-800"
@@ -245,6 +297,46 @@ const Users = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            {/* Roles Legend */}
+            <div className="flex justify-end mr-1 md:mr-5 mt-4">
+                <div className="relative">
+                    <button
+                        onClick={() => setShowRolesLegend(!showRolesLegend)}
+                        className="flex items-center gap-1 text-gray-600 hover:text-gray-800 text-sm"
+                    >
+                        Roles
+                        <Info className="h-4 w-4" />
+                    </button>
+
+                    {showRolesLegend && (
+                        <div className="absolute bottom-full right-0 mb-2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 min-w-[200px] z-10">
+                            <h3 className="font-semibold text-gray-800 mb-3 text-sm">
+                                Role Definitions
+                            </h3>
+                            <div className="space-y-2">
+                                {Object.entries(roleDefinitions).map(
+                                    ([key, role]) => (
+                                        <div
+                                            key={key}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <span
+                                                className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${role.color}`}
+                                            >
+                                                {key}
+                                            </span>
+                                            <span className="text-sm text-gray-700">
+                                                {role.label}
+                                            </span>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {isAddModalOpen && (
@@ -669,6 +761,72 @@ const Users = () => {
                                 Archive
                             </button>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Filter Modal */}
+            {isFilterModalOpen && (
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-xl font-bold text-gray-800">
+                                Filter by Province
+                            </h2>
+                            <button
+                                onClick={() => setIsFilterModalOpen(false)}
+                                className="text-gray-500 hover:text-gray-700"
+                            >
+                                <X className="h-6 w-6" />
+                            </button>
+                        </div>
+
+                        <div className="space-y-3 mb-6">
+                            {provinces.map((province) => (
+                                <label
+                                    key={province}
+                                    className="flex items-center space-x-3 cursor-pointer"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedProvinces.includes(
+                                            province
+                                        )}
+                                        onChange={() =>
+                                            handleProvinceFilter(province)
+                                        }
+                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                    />
+                                    <span className="text-gray-700">
+                                        {province}
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+
+                        <div className="flex gap-3">
+                            <button
+                                onClick={clearFilters}
+                                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
+                            >
+                                Clear All
+                            </button>
+                            <button
+                                onClick={() => setIsFilterModalOpen(false)}
+                                className="flex-1 px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800"
+                            >
+                                Apply Filter
+                            </button>
+                        </div>
+
+                        {selectedProvinces.length > 0 && (
+                            <div className="mt-4 p-3 bg-green-50 rounded-md">
+                                <p className="text-sm text-green-800">
+                                    <strong>Selected:</strong>{" "}
+                                    {selectedProvinces.join(", ")}
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
