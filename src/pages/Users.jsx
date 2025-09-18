@@ -106,13 +106,14 @@ const Users = () => {
     return (
         <div className="relative bg-gray-100 min-screen">
             <div className="p-1 md:p-5 md:mt-0">
-                <div className="flex flex-row md:justify-between md:items-center bg-white shadow p-2 rounded mb-6 gap-3 mt-5 ">
+                <div className="flex flex-row md:justify-between md:items-center bg-white rounded mb-6 gap-3 mt-5 ">
                     <div className="relative flex-1">
-                        <Search className="absolute left-2 md:top-2 top-1 h-5 w-5 text-gray-500" />
+                        <Search className="absolute left-2 md:top-3.5 top-2.5 h-5 w-5 text-gray-500" />
                         <input
                             type="text"
                             placeholder="Search Users"
-                            className="pl-10 md:pr-2 md:py-2 pr-2 py-1 rounded-md text-base w-full focus:outline-none focus:ring-0"
+                            className="pl-10 pr-2 py-2 md:pr-3 md:py-3 rounded-md text-base w-full border border-gray-300 
+                                        focus:outline-none focus:ring-2 focus:ring-green-800"
                         />
                     </div>
                 </div>

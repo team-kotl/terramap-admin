@@ -20,7 +20,7 @@ const formatTimestamp = (ts) => {
 const SiteActivity = () => {
     const [logs, setLogs] = useState([]);
     const [search, setSearch] = useState("");
-
+    
     // ✅ Mock data (temporary)
     useEffect(() => {
         const mockLogs = [
@@ -72,15 +72,15 @@ const SiteActivity = () => {
                     </h1>
 
                     {/* Search Bar */}
-                    <div className="relative w-full md:w-80 bg-white">
-                        <Search className="absolute left-2 top-2.5 h-5 w-5 text-gray-500" />
+                    <div className="relative w-full md:w-80 bg-white rounded-md">
+                        <Search className="absolute left-2 top-2.5 h-5 w-5 text-gray-500 active:text-green-500" />
                         <input
                             type="text"
                             placeholder="Search Logs"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             className="pl-10 pr-2 py-2 rounded-md text-base w-full border border-gray-300 
-                                        focus:outline-none focus:ring-1 focus:ring-green-800"
+                                        focus:outline-none focus:ring-2 focus:ring-green-800"
                         />
                     </div>
                 </div>
