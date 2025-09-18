@@ -28,6 +28,7 @@ const SiteActivity = () => {
                 logId: 1,
                 action: "Open Site",
                 timestamp: "2023-10-05T08:02:15",
+                username: "janedoe",
                 statusCode: 200,
                 userAgent: "Chrome",
                 region: "CAR",
@@ -37,6 +38,7 @@ const SiteActivity = () => {
                 logId: 2,
                 action: "Request Download",
                 timestamp: "2023-10-05T09:45:30",
+                username: "bryce",
                 statusCode: 403,
                 userAgent: "Edge",
                 region: "CAR",
@@ -46,6 +48,7 @@ const SiteActivity = () => {
                 logId: 3,
                 action: "Open Site",
                 timestamp: "2023-10-05T11:30:22",
+                username: "stephdrew",
                 statusCode: 404,
                 userAgent: "Firefox",
                 region: "CAR",
@@ -96,7 +99,10 @@ const SiteActivity = () => {
                                 <th className="px-4 py-3 min-w-[80px]">
                                     Log ID
                                 </th>
-                                <th className="px-4 py-3 min-w-[220px]">
+                                <th className="px-4 py-3 min-w-[80px]">
+                                    Username
+                                </th>
+                                <th className="px-4 py-3 min-w-[80px]">
                                     Action
                                 </th>
                                 <th className="px-4 py-3 min-w-[120px]">
@@ -127,6 +133,7 @@ const SiteActivity = () => {
                                         {formatTimestamp(item.timestamp)}
                                     </td>
                                     <td className="px-4 py-3">{item.logId}</td>
+                                    <td className="px-4 py-3">{item.username}</td>
                                     <td className="px-4 py-3">{item.action}</td>
                                     <td className="px-4 py-3">
                                         {item.statusCode}
