@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@tailwind utilities;
+
+/* Define light and dark theme colors */
+@layer base {
+:root {
+    --color-primary: #09511C; /* dark green */
+    --color-secondary: #757575; /* gray */
+    --color-bg: #f3f4f6; /* gray-100 */
+    --color-card: #ffffff; /* white */
+    --color-border: #e5e7eb; /* gray-200 */
+    --color-text: #1f2937; /* gray-800 */
+    --chart-success: #16a34a; /* green */
+    --chart-error: #dc2626;   /* red */
+    --chart-warning: #facc15; /* yellow */
+    --chart-info: #2563eb;    /* blue */
+
+    --sidebar-active-text: #166534;   /* green-800 */
+    --sidebar-active-icon: #166534;
+    --sidebar-hover-text: #374151;   /* gray-700 */
+    --sidebar-bg: #e5e7eb;           /* gray-200 */
+    --sidebar-border: #9ca3af;       /* gray-400 */
+    --sidebar-user-bg: #166534;
+    --sidebar-user-hover-bg: #14532d;
+    --sidebar-user-text: #ffffff;
+    --sidebar-mobile-btn-bg: #166534;     /* green-700 */
+    --sidebar-mobile-btn-text: #ffffff;
+    --sidebar-mobile-card-bg: #ffffff;
+    --sidebar-mobile-card-border: #e5e7eb; /* gray-200 */
+}
+
+.dark {
+    --color-primary: #4ade80; /* light green for dark mode */
+    --color-secondary: #9ca3af; /* gray-400 */
+    --color-bg: #111827; /* gray-900 */
+    --color-card: #1f2937; /* gray-800 */
+    --color-border: #374151; /* gray-700 */
+    --color-text: #f9fafb; /* gray-50 */
+    --chart-success: #22c55e;
+    --chart-error: #ef4444;
+    --chart-warning: #fcd34d;
+    --chart-info: #3b82f6;
+    --sidebar-active-text: #22c55e;
+    --sidebar-active-icon: #22c55e;
+    --sidebar-hover-text: #d1d5db;
+    --sidebar-bg: #1f2937;
+    --sidebar-border: #4b5563;
+    --sidebar-user-bg: #22c55e;
+    --sidebar-user-hover-bg: #15803d;
+    --sidebar-user-text: #f9fafb;
+    --sidebar-mobile-btn-bg: #22c55e;
+    --sidebar-mobile-btn-text: #0f172a;   /* dark text on green */
+    --sidebar-mobile-card-bg: #1f2937;    /* gray-800 */
+    --sidebar-mobile-card-border: #4b5563;
+}
+}
+
+/* Utilities for text colors */
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  .bg-surface {
+    background-color: var(--color-bg);
+  }
+  .bg-card {
+    background-color: var(--color-card);
+  }
+  .border-theme {
+    border-color: var(--color-border);
+  }
+  .text-theme {
+    color: var(--color-text);
+  }
+}
