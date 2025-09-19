@@ -109,7 +109,7 @@ const Survey = () => {
 
     if (selectedClient) {
         return (
-            <div className=" md:pr-6 md:pl-6 md:pt-0 pt-10 pr-0 pl-0">
+            <div className=" md:pr-6 md:pl-6 md:pt-0 pt-10 pr-0 pl-0 w-full bg-gray-100">
                 <div className="md:justify-between md:items-center p-2 mb-6 gap-3 mt-5">
                     <button
                         onClick={BackToList}
@@ -306,7 +306,7 @@ const Survey = () => {
                         )}
 
                         {activeTab === "comments" && (
-                            <div className="mt-6">
+                            <div className="mt-6 w-full">
                                 <p className="text-gray-700">
                                     {selectedClient.comments ||
                                         "No comments provided."}
